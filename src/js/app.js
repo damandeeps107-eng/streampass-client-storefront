@@ -1,11 +1,15 @@
-// LocalStorage Sync helper
+const STORAGE_KEY = 'streamPass_all_client_orders';
+
 function saveNewClientOrder(order) {
-  const key = 'streamPass_all_client_orders';
-  let orders = [];
-  try { orders = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e){}
-  orders.unshift(order);
-  localStorage.setItem(key, JSON.stringify(orders));
-  try { window.dispatchEvent(new Event('storage')); } catch(e){}
+  if (!order.status) order.status = 'Pending';
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    const orders = raw ? JSON.parse(raw) : [];
+    orders.unshift(order);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+  } catch (e) {
+    console.error('Failed to save order', e);
+  }
 }
 /**
  * StreamPass OTT Marketplace Main Application Controller
