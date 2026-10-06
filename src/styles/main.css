@@ -293,3 +293,263 @@ a {
   color: var(--accent-red);
   border: 1px solid var(--accent-red-border);
 }
+
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVE DESIGN & TOUCH OPTIMIZATION
+   ========================================================================== */
+
+/* Fix iOS font auto-scaling on inputs */
+input, select, textarea, button {
+  font-size: 16px !important; /* Prevents auto-zoom on iOS safari */
+}
+
+@media (max-width: 900px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .nav-menu {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .nav-bot-btn span {
+    display: none;
+  }
+
+  .nav-bot-btn {
+    padding: 8px 10px;
+  }
+
+  .mobile-drawer {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 2px solid var(--border-color);
+    padding: 20px 16px;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.15);
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1001;
+  }
+
+  .mobile-drawer.open, .mobile-drawer.active {
+    display: flex !important;
+  }
+
+  .mobile-drawer .nav-link {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  .mobile-drawer .btn-block {
+    margin-top: 8px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* Hero Mobile */
+  .hero-section {
+    padding: 32px 0 44px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.1rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 16px;
+  }
+
+  .hero-subheading {
+    font-size: 0.96rem !important;
+    margin-bottom: 24px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-trust-line {
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* Hero Visual Deck Mobile */
+  .visual-platforms-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .visual-platform-item {
+    padding: 8px 4px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .visual-platform-item img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* Trust Bar Mobile */
+  .trust-bar-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .trust-bar-item {
+    font-size: 0.8rem !important;
+  }
+
+  /* Plans Mobile */
+  .plans-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .plan-card {
+    padding: 24px 20px !important;
+  }
+
+  .plan-price {
+    font-size: 2.1rem !important;
+  }
+
+  /* Platforms Showcase Mobile */
+  .platforms-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .platform-card {
+    padding: 12px 6px !important;
+  }
+
+  .platform-logo {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .platform-name {
+    font-size: 0.78rem !important;
+  }
+
+  /* Features & Reviews Mobile */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .feature-card {
+    padding: 20px !important;
+  }
+
+  /* Footer Mobile */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Modals Mobile Optimization */
+  .modal-overlay {
+    padding: 12px !important;
+  }
+
+  .modal-container {
+    max-width: 100% !important;
+    max-height: 90vh !important;
+    border-radius: 16px !important;
+  }
+
+  .modal-header {
+    padding: 16px 20px !important;
+  }
+
+  .modal-body {
+    padding: 20px 16px !important;
+  }
+
+  .modal-tabs {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .modal-tab-btn {
+    width: 100% !important;
+    padding: 10px !important;
+  }
+
+  /* VIP Pop-up Mobile */
+  #vip-promo-modal .modal-container {
+    max-width: 94% !important;
+  }
+
+  #vip-promo-modal .modal-container > div {
+    grid-template-columns: 1fr !important;
+  }
+
+  #vip-promo-modal img {
+    height: 150px !important;
+  }
+}
