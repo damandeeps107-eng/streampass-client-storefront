@@ -899,3 +899,16 @@ html, body {
     font-weight: 800 !important;
   }
 }
+
+
+/* CRITICAL FIX: Hide Desktop Nav Links on Mobile to prevent overlap */
+@media (max-width: 960px) {
+  .nav-menu, nav.nav-menu, .site-header .nav-links {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
