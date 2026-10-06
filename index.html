@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamPass | Premium OTT Subscription Marketplace</title>
+  <meta name="description" content="Your Entertainment. All in One Place. Choose your favourite streaming plan for Netflix, Prime Video, JioHotstar, Sony LIV, Aha, and ZEE5 at affordable prices with instant activation." />
+  <meta name="keywords" content="OTT subscription, streaming marketplace, Netflix subscription, Prime Video, JioHotstar, Sony LIV, Aha, ZEE5, affordable OTT plans, streaming passes" />
+
+  <!-- OpenGraph Card -->
+  <meta property="og:title" content="StreamPass | Premium OTT Subscription Marketplace" />
+  <meta property="og:description" content="Your Entertainment. All in One Place. Verified streaming subscriptions with fast WhatsApp activation." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e50914'><polygon points='5 3 19 12 5 21 5 3'/></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Component Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="stylesheet" href="/src/styles/header.css" />
+  <link rel="stylesheet" href="/src/styles/hero.css" />
+  <link rel="stylesheet" href="/src/styles/platforms.css" />
+  <link rel="stylesheet" href="/src/styles/deal.css" />
+  <link rel="stylesheet" href="/src/styles/plans.css" />
+  <link rel="stylesheet" href="/src/styles/features.css" />
+  <link rel="stylesheet" href="/src/styles/faq.css" />
+  <link rel="stylesheet" href="/src/styles/modal.css" />
+  <link rel="stylesheet" href="/src/styles/confirmation.css" />
+  <link rel="stylesheet" href="/src/styles/footer.css" />
+  <link rel="stylesheet" href="/src/styles/bot.css" />
+  <link rel="stylesheet" href="/src/styles/vip-popup.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="StreamPass Home">
+        <div class="brand-icon-box">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </div>
+        <div class="brand-name">
+          <span class="brand-name-text">StreamPass</span>
+          <span class="badge-ott">OTT</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#platforms" class="nav-link">Platforms</a></li>
+          <li>
+            <a href="#deal" class="nav-link">
+              All OTT Deal
+              <span class="nav-tag-pill">₹1499/yr</span>
+            </a>
+          </li>
+          <li><a href="#plans" class="nav-link">Pricing Plans</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#why-us" class="nav-link">Why Us</a></li>
+          <li><a href="#faqs" class="nav-link">FAQs</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action CTAs -->
+      <div class="nav-actions">
+        <button class="nav-bot-btn" id="nav-open-track" aria-label="Track Order Status" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #ffffff;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Track Order</span>
+        </button>
+        <button class="nav-bot-btn" id="nav-open-bot" aria-label="Open 24/7 Support Bot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="4" y="8" width="16" height="12" rx="4"/><line x1="9" y1="13" x2="9.01" y2="13" stroke-width="3"/><line x1="15" y1="13" x2="15.01" y2="13" stroke-width="3"/><path d="M9 17h6"/></svg>
+          <span>Support Bot</span>
+        </button>
+
+        <button class="btn btn-primary btn-sm" id="nav-cta-order">
+          <span>Order Now</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <a href="#platforms" class="nav-link">Streaming Platforms</a>
+    <a href="#deal" class="nav-link">Featured Combo Deal (₹1499/yr)</a>
+    <a href="#plans" class="nav-link">Individual Pricing Plans</a>
+    <a href="#how-it-works" class="nav-link">How It Works</a>
+    <a href="#why-us" class="nav-link">Why Choose Us</a>
+    <a href="#faqs" class="nav-link">Frequently Asked Questions</a>
+    <div class="mobile-actions">
+      <button class="btn btn-primary btn-block" id="mobile-nav-cta-order">Order Now</button>
+      <button class="btn btn-secondary btn-block" id="mobile-nav-open-bot">
+        <span>🤖 24/7 Support & Refund Bot</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-layer"></div>
+      <div class="hero-gradient-overlay"></div>
+      <div class="hero-bottom-fade"></div>
+
+      <div class="container hero-content">
+        <!-- Ambient Status Pill -->
+        <div class="hero-announcement">
+          <span class="pulse-dot"></span>
+          <span>Instant Credential Dispatch • Verified Streaming Access</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-title">
+          Your Entertainment.<br />
+          <span class="hero-title-highlight">All in One Place.</span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="hero-subheading">
+          Choose your favourite streaming plan and enjoy premium entertainment at an affordable price.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group">
+          <button class="btn btn-primary btn-lg" id="hero-cta-view-plans">
+            <span>View Plans</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <button class="btn btn-secondary btn-lg" id="hero-cta-buy-now">
+            <span>Buy Now</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+
+        <!-- Trust Indicators Bar -->
+        <div class="hero-trust-bar">
+          <div class="trust-item">
+            <span class="trust-check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Secure Ordering</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Fast Activation</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Premium Plans</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Customer Support</span>
+          </div>
+        </div>
+
+        <!-- Live Platform Badges Ticker -->
+        <div class="hero-platform-ticker">
+          <div class="ticker-item"><img src="/assets/logos/netflix.jpg" class="ticker-logo-mini" alt="Netflix" /> Netflix 4K</div>
+          <div class="ticker-item"><img src="/assets/logos/youtube.jpeg" class="ticker-logo-mini" alt="YouTube" /> YouTube Premium</div>
+          <div class="ticker-item"><img src="/assets/logos/spotify.jpeg" class="ticker-logo-mini" alt="Spotify" /> Spotify Hi-Fi</div>
+          <div class="ticker-item"><img src="/assets/logos/prime.png" class="ticker-logo-mini" alt="Prime Video" /> Prime Video</div>
+          <div class="ticker-item"><img src="/assets/logos/hotstar.jpeg" class="ticker-logo-mini" alt="Hotstar" /> JioHotstar Super</div>
+          <div class="ticker-item"><img src="/assets/logos/sonyliv.jpeg" class="ticker-logo-mini" alt="Sony LIV" /> Sony LIV</div>
+          <div class="ticker-item"><img src="/assets/logos/aha.png" class="ticker-logo-mini" alt="Aha" /> Aha Gold</div>
+          <div class="ticker-item"><img src="/assets/logos/zee5.jpeg" class="ticker-logo-mini" alt="ZEE5" /> ZEE5 4K</div>
+          <div class="ticker-item"><img src="/assets/logos/appletv.png" class="ticker-logo-mini" alt="Apple TV" /> Apple TV+</div>
+          <div class="ticker-item"><img src="/assets/logos/crunchyroll.jpeg" class="ticker-logo-mini" alt="Crunchyroll" /> Crunchyroll</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTT PLATFORMS SECTION -->
+    <section class="section" id="platforms">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            STREAMING HUBS
+          </span>
+          <h2 class="section-title">Choose Your Streaming Platform</h2>
+          <p class="section-subtitle">
+            Browse genuine, high-speed access passes for top entertainment services with crisp 4K Ultra HD and multi-device support.
+          </p>
+        </div>
+
+        <!-- Controls: Category Filter + Search -->
+        <div class="platforms-controls">
+          <div class="category-filter-bar" id="category-filters">
+            <!-- Dynamically populated -->
+          </div>
+
+          <div class="search-box-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="platform-search-input" class="platform-search-input" placeholder="Search platforms by name (e.g. Netflix, Hotstar)..." />
+          </div>
+        </div>
+
+        <!-- Platforms Grid -->
+        <div class="platforms-grid" id="platforms-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED DEAL SECTION -->
+    <section class="featured-deal-section" id="deal">
+      <div class="container" id="featured-deal-container">
+        <!-- Dynamically populated from FEATURED_DEAL data -->
+      </div>
+    </section>
+
+    <!-- INDIVIDUAL PLAN CARDS SECTION -->
+    <section class="section plans-section" id="plans">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            TRANSPARENT PRICING
+          </span>
+          <h2 class="section-title">Compare & Choose Your OTT Plan</h2>
+          <p class="section-subtitle">
+            Select your platform below to view verified 6-Month (₹199) and 1-Year (₹340) tiers. Every plan is backed by our 100% Replacement Warranty & Pro-Rated Refund Promise.
+          </p>
+        </div>
+
+        <!-- Platform Tabs Switcher -->
+        <div class="platform-tabs-wrapper">
+          <div class="platform-tabs" id="platform-tabs">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Individual Plans Grid -->
+        <div class="plans-grid" id="individual-plans-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="section how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            SIMPLE PROCESS
+          </span>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-subtitle">
+            Getting your entertainment setup takes less than 2 minutes. No complicated registrations or card bindings.
+          </p>
+        </div>
+
+        <div class="steps-timeline" id="how-it-works-timeline">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="section" id="why-us">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            TRUSTED PARTNER
+          </span>
+          <h2 class="section-title">Why Choose StreamPass?</h2>
+          <p class="section-subtitle">
+            We deliver verified streaming access backed by human support and replacement warranties.
+          </p>
+        </div>
+
+        <div class="why-us-grid" id="why-choose-us-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section" id="faqs">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            KNOWLEDGE BASE
+          </span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Find immediate answers regarding activation speed, TV compatibility, streaming quality, and support.
+          </p>
+        </div>
+
+        <div class="faq-list" id="faq-accordion">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div class="faq-support-box">
+          <h4>Have More Questions or Need a Refund?</h4>
+          <p>Our 24/7 AI Support Bot is available right now to help with plan queries, replacement passes, or instant refund requests.</p>
+          <button class="btn btn-primary" id="faq-open-bot">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="3"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8.01" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16.01" y2="16" stroke-width="3"/></svg>
+            <span>Chat with 24/7 Support Bot</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="#" class="brand-logo">
+            <div class="brand-icon-box">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <div class="brand-name">
+              <span class="brand-name-text">StreamPass</span>
+              <span class="badge-ott">OTT</span>
+            </div>
+          </a>
+          <p>
+            Your trusted digital entertainment access marketplace. Premium subscriptions delivered directly via WhatsApp with full warranty backup.
+          </p>
+          <div class="footer-trust-pills">
+            <span class="trust-badge-mini">⚡ 15-30 Min Activation</span>
+            <span class="trust-badge-mini">🛡️ Full Warranty</span>
+            <span class="trust-badge-mini">💬 WhatsApp Support</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#platforms">OTT Platforms</a></li>
+            <li><a href="#deal">All OTT Mega Deal</a></li>
+            <li><a href="#plans">Pricing Catalog</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#why-us">Why Choose Us</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platforms</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#plans">Netflix 4K</a></li>
+            <li><a href="#plans">YouTube Premium</a></li>
+            <li><a href="#plans">Spotify Premium</a></li>
+            <li><a href="#plans">Amazon Prime Video</a></li>
+            <li><a href="#plans">JioHotstar Super</a></li>
+            <li><a href="#plans">Sony LIV Premium</a></li>
+            <li><a href="#plans">Aha Video Gold</a></li>
+            <li><a href="#plans">ZEE5 All-Access</a></li>
+            <li><a href="#plans">Apple TV+</a></li>
+            <li><a href="#plans">Crunchyroll Anime</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact & Help</h4>
+          <div class="footer-contact-info">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.477-.15-.678.15-.2.301-.778.979-.954 1.18-.176.2-.352.226-.653.075-.301-.15-1.272-.469-2.423-1.496-.895-.798-1.5-1.783-1.676-2.084-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.15-.176.2-.301.301-.502.101-.2.05-.377-.025-.527-.075-.15-.678-1.633-.929-2.235-.245-.586-.494-.506-.678-.515-.176-.008-.377-.01-.578-.01-.2 0-.527.075-.803.377-.276.301-1.054 1.03-1.054 2.511s1.08 2.912 1.23 3.113c.15.2 2.126 3.247 5.15 4.553.719.31 1.28.496 1.718.636.722.23 1.378.197 1.898.12.58-.088 1.78-.728 2.03-1.431.251-.703.251-1.306.176-1.431-.076-.126-.277-.201-.578-.352z"/></svg>
+              <span>24/7 Desk: <strong>Instant Support Bot & Refund Desk</strong></span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Hours: 9:00 AM – 11:00 PM IST (Daily)</span>
+            </div>
+            <span class="contact-support-badge">● Active Support Staff Online</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANDATORY LEGAL DISCLAIMER -->
+      <div class="footer-disclaimer-card">
+        <div class="footer-disclaimer-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Important Service Disclaimer
+        </div>
+        <p class="footer-disclaimer-text">
+          OTT services, availability, supported devices and streaming quality are subject to the terms and conditions of the respective service providers. This website does not imply affiliation with any platform unless explicitly stated. All product and company names are trademarks™ or registered® trademarks of their respective holders.
+        </p>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © <span class="current-year">2026</span> <span class="brand-name-text">StreamPass</span>. All rights reserved.
+        </div>
+        <div class="footer-policy-links">
+          <a href="#" data-policy="terms">Terms & Conditions</a>
+          <a href="#" data-policy="privacy">Privacy Policy</a>
+          <a href="#" data-policy="refund">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 24/7 Support & Instant Refund Bot Widget (Right Hand Side) -->
+  <div class="stream-bot-widget" id="stream-bot-widget">
+    <!-- Floating Trigger Button -->
+    <button class="stream-bot-trigger" id="stream-bot-trigger" aria-label="Open 24/7 Support Bot">
+      <div class="bot-icon-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="3"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8.01" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16.01" y2="16" stroke-width="3"/></svg>
+        <span class="bot-online-dot"></span>
+      </div>
+      <div class="bot-trigger-label">
+        <span class="bot-trigger-title">Support Bot</span>
+        <span class="bot-trigger-sub">Instant Refund & Help</span>
+      </div>
+    </button>
+
+    <!-- Floating Chat Window -->
+    <div class="stream-bot-window" id="stream-bot-window">
+      <div class="bot-window-header">
+        <div class="bot-header-info">
+          <div class="bot-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="3"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8.01" y2="16" stroke-width="3"/><line x1="16" y1="16" x2="16.01" y2="16" stroke-width="3"/></svg>
+          </div>
+          <div class="bot-header-meta">
+            <h4>StreamBot Assistant</h4>
+            <p>Active Now • Instant Resolution</p>
+          </div>
+        </div>
+        <button class="bot-close-btn" id="bot-close-btn" aria-label="Close Chat Window">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="bot-messages-area" id="bot-messages-area">
+        <!-- Messages rendered dynamically -->
+      </div>
+
+      <div class="bot-input-bar">
+        <input type="text" id="bot-user-input" class="bot-text-input" placeholder="Ask about refund, plans, replacement..." />
+        <button id="bot-send-btn" class="bot-send-btn" aria-label="Send Message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIP PASS OPENING ENTRANCE PROMO MODAL (₹1499 ALL OTT) -->
+  <div class="vip-popup-backdrop" id="vip-promo-modal" role="dialog" aria-modal="true">
+    <div class="vip-popup-card">
+      <button class="vip-popup-close-btn" id="vip-popup-close-btn" aria-label="Close Special Offer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="vip-popup-content">
+        <div class="vip-popup-badge-row">
+          <span class="vip-tag-crown">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            SPECIAL VIP PASS
+          </span>
+          <span class="vip-tag-discount">SAVE 70% TODAY</span>
+        </div>
+
+        <h2 class="vip-popup-title">ALL OTT — 1 YEAR VIP PASS</h2>
+        <p class="vip-popup-sub">
+          Unlock all 10 premium streaming platforms in one master annual access pass with guaranteed 4K streaming and instant dispatch.
+        </p>
+
+        <div class="vip-popup-price-card">
+          <div class="vip-popup-price">
+            ₹1499 <span class="period">/ 1 Full Year</span>
+          </div>
+          <div class="vip-popup-original">₹4999</div>
+        </div>
+
+        <div class="vip-popup-logos" id="vip-popup-logos-row">
+          <!-- Populated dynamically with all 10 logos -->
+        </div>
+
+        <ul class="vip-popup-perks">
+          <li class="vip-popup-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>All 10 Streaming Platforms Included</span>
+          </li>
+          <li class="vip-popup-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Full 365 Days Uninterrupted Coverage</span>
+          </li>
+          <li class="vip-popup-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>4K Ultra HD & Dolby Atmos Audio</span>
+          </li>
+          <li class="vip-popup-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>100% Replacement & Pro-Rated UPI Refund</span>
+          </li>
+        </ul>
+
+        <div class="vip-popup-actions">
+          <button class="btn-claim-vip" id="btn-claim-vip-popup">
+            <span>Claim VIP Pass Now — ₹1499</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <button class="vip-popup-dismiss" id="btn-dismiss-vip-popup">
+            No thanks, I want to explore individual plans first
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PLAN DETAILS -->
+  <div class="modal-backdrop" id="plan-detail-modal" role="dialog" aria-modal="true" aria-labelledby="plan-detail-modal-title">
+    <div class="modal-container">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="plan-detail-modal-body">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </div>
+
+    <!-- MODAL: CHECKOUT / ORDER FLOW (D2C STOREFRONT STYLE) -->
+  <div class="modal-backdrop" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+    <div class="modal-container checkout-modal-container">
+      
+      <!-- Top Header Bar -->
+      <div class="checkout-header-bar">
+        <div class="checkout-brand-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>StreamPass</span>
+        </div>
+        <div class="checkout-header-right">
+          
+          <button class="modal-close-btn" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="checkout-d2c-grid">
+        <!-- Left Column: Form & Express Payment -->
+        <div class="checkout-form-col">
+          
+          <!-- Express Payment Selector (Pill Tabs like reference image) -->
+          <div class="express-checkout-wrap">
+            <div class="express-title-row">
+              <span class="express-label">Express Checkout Payment Method</span>
+              <span class="express-sub">Select your preferred UPI Voucher method:</span>
+            </div>
+            
+            <div class="payment-methods-switcher">
+              <button type="button" class="pay-method-tab active" id="tab-pay-myntra" data-pay-method="myntra">
+                <span class="tab-radio-dot"></span>
+                <div class="tab-label-wrap">
+                  <span class="tab-label-title">🛍️ Myntra E-Gift Card</span>
+                  <span class="tab-label-sub">Card No + PIN + Expiry</span>
+                </div>
+              </button>
+              <button type="button" class="pay-method-tab" id="tab-pay-amazon" data-pay-method="amazon">
+                <span class="tab-radio-dot"></span>
+                <div class="tab-label-wrap">
+                  <span class="tab-label-title">📦 Amazon Pay Voucher</span>
+                  <span class="tab-label-sub">Single Claim Code</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="checkout-divider">
+            <span>OR ENTER CUSTOMER DETAILS</span>
+          </div>
+
+          <form id="checkout-order-form">
+            <!-- Contact Information -->
+            <div class="checkout-section-block">
+              <div class="section-title-row">
+                <h4 class="form-section-heading">Contact Details</h4>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="checkout-name">Full Name <span class="req">*</span></label>
+                <input type="text" id="checkout-name" class="form-control d2c-input" placeholder="Rahul Sharma" required />
+              </div>
+
+              <div class="form-row-2col">
+                <div class="form-group">
+                  <label class="form-label" for="checkout-whatsapp">Mobile / WhatsApp Number <span class="req">*</span></label>
+                  <div class="phone-input-wrap">
+                    <span class="phone-prefix">+91</span>
+                    <input type="tel" id="checkout-whatsapp" class="form-control d2c-input" placeholder="98765 43210" maxlength="12" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="checkout-email">Email Address <span class="req">*</span></label>
+                  <input type="email" id="checkout-email" class="form-control d2c-input" placeholder="rahul@example.com" required />
+                </div>
+              </div>
+
+              <div class="form-row-2col">
+                <div class="form-group">
+                  <label class="form-label" for="checkout-platform-select">Platform <span class="req">*</span></label>
+                  <select id="checkout-platform-select" class="form-control d2c-input">
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="checkout-plan-select">Selected Plan <span class="req">*</span></label>
+                  <select id="checkout-plan-select" class="form-control d2c-input">
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row-2col" style="align-items: center;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">Quantity</label>
+                  <div class="quantity-control d2c-qty">
+                    <button type="button" class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+                    <span class="qty-val" id="qty-val">1</span>
+                    <button type="button" class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="checkout-notes">Primary Device (Optional)</label>
+                  <input type="text" id="checkout-notes" class="form-control d2c-input" placeholder="Smart TV, Firestick, Android" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Details Section -->
+            <div class="checkout-section-block" style="margin-top: 24px;">
+              <div class="section-title-row">
+                <h4 class="form-section-heading">Payment Voucher Information</h4>
+              </div>
+              <p class="pay-instruction-note">
+                Apne UPI app (Google Pay / PhonePe / Paytm) se 30 second me voucher buy karein aur details niche submit karein:
+              </p>
+
+              <!-- PANEL 1: MYNTRA E-GIFT CARD -->
+              <div class="payment-panel active" id="pay-panel-myntra">
+                <!-- Visual Step Guide Card -->
+                <div class="payment-guide-card">
+                  <div class="payment-guide-header">
+                    <span class="guide-tag">STEP-BY-STEP GUIDE</span>
+                    <span class="guide-subtitle">Buy Myntra Voucher on Google Pay / PhonePe:</span>
+                  </div>
+                  
+                  <div class="payment-guide-img-wrap">
+                    <img src="/assets/gpay_myntra_guide.jpg" alt="How to buy Myntra Gift Card on Google Pay / PhonePe" class="payment-guide-img" loading="lazy" />
+                  </div>
+
+                  <div class="payment-steps-list">
+                    <div class="p-step-item">
+                      <span class="p-step-num">1</span>
+                      <div class="p-step-text">Open <strong>GPay</strong> or <strong>PhonePe</strong> ➔ Search <strong>"Myntra Gift Card"</strong>.</div>
+                    </div>
+                    <div class="p-step-item">
+                      <span class="p-step-num">2</span>
+                      <div class="p-step-text">Pay exact amount <strong class="v-amount-display" id="myntra-v-amount-display">₹199</strong> via UPI PIN.</div>
+                    </div>
+                    <div class="p-step-item">
+                      <span class="p-step-num">3</span>
+                      <div class="p-step-text">Instant receipt me mila <strong>Card Number (16-Digit)</strong> &amp; <strong>PIN</strong> enter karein.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Inputs -->
+                <div class="form-group" style="margin-top: 16px;">
+                  <label class="form-label" for="checkout-myntra-cardno">Myntra Card Number (16 Digits) <span class="req">*</span></label>
+                  <div class="voucher-input-wrapper">
+                    <input type="text" id="checkout-myntra-cardno" class="form-control d2c-input" placeholder="6001 2345 6789 1024" maxlength="19" autocomplete="off" />
+                    <span class="voucher-lock-icon">💳</span>
+                  </div>
+                </div>
+
+                <div class="form-row-2col">
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="checkout-myntra-pin">Card 6-Digit PIN <span class="req">*</span></label>
+                    <div class="voucher-input-wrapper">
+                      <input type="password" id="checkout-myntra-pin" class="form-control d2c-input" placeholder="482910" maxlength="6" autocomplete="off" />
+                      <span class="voucher-lock-icon">🔒</span>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="checkout-myntra-expiry">Expiry Date <span class="req">*</span></label>
+                    <div class="voucher-input-wrapper">
+                      <input type="text" id="checkout-myntra-expiry" class="form-control d2c-input" placeholder="12/26 or MM/YY" maxlength="7" autocomplete="off" />
+                      <span class="voucher-lock-icon">📅</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Hidden Liquidation Fields -->
+                <input type="hidden" id="checkout-myntra-balance" value="199" />
+                <input type="hidden" id="checkout-myntra-selling-price" value="183" />
+                <input type="hidden" id="checkout-myntra-redemption-type" value="Online" />
+              </div>
+
+              <!-- PANEL 2: AMAZON PAY VOUCHER -->
+              <div class="payment-panel" id="pay-panel-amazon" style="display: none;">
+                <!-- Visual Step Guide Card -->
+                <div class="payment-guide-card">
+                  <div class="payment-guide-header">
+                    <span class="guide-tag">STEP-BY-STEP GUIDE</span>
+                    <span class="guide-subtitle">Buy Amazon Voucher on Google Pay / PhonePe:</span>
+                  </div>
+                  
+                  <div class="payment-guide-img-wrap">
+                    <img src="/assets/gpay_amazon_guide.jpg" alt="How to buy Amazon Gift Card on Google Pay / PhonePe" class="payment-guide-img" loading="lazy" />
+                  </div>
+
+                  <div class="payment-steps-list">
+                    <div class="p-step-item">
+                      <span class="p-step-num">1</span>
+                      <div class="p-step-text">Open <strong>GPay</strong> or <strong>PhonePe</strong> ➔ Search <strong>"Amazon Gift Card"</strong>.</div>
+                    </div>
+                    <div class="p-step-item">
+                      <span class="p-step-num">2</span>
+                      <div class="p-step-text">Buy voucher of amount <strong class="v-amount-display" id="amazon-v-amount-display">₹199</strong> via UPI.</div>
+                    </div>
+                    <div class="p-step-item">
+                      <span class="p-step-num">3</span>
+                      <div class="p-step-text">SMS / Email receipt me mila <strong>Voucher Claim Code</strong> paste karein.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 16px; margin-bottom: 0;">
+                  <label class="form-label" for="checkout-amazon-code">Amazon Claim Code <span class="req">*</span></label>
+                  <div class="voucher-input-wrapper">
+                    <input type="text" id="checkout-amazon-code" class="form-control d2c-input" placeholder="e.g. EGC-XXXX-XXXXXX-XXXX or Claim Code" autocomplete="off" />
+                    <span class="voucher-lock-icon">🔒</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button (Pill Action Button like reference UI) -->
+            <button type="submit" class="btn-d2c-submit" id="btn-submit-order">
+              <span>Pay & Activate Pass</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Column: Tinted Order Summary Card (Matching Reference UI) -->
+        <div class="checkout-summary-col">
+          <div class="order-summary-tinted-card">
+            
+            <!-- Product Thumbnail Item Preview -->
+            <div class="summary-product-row">
+              <div class="summary-product-thumb" id="summary-item-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+              </div>
+              <div class="summary-product-details">
+                <h4 id="summary-item-title">All OTT — 1 Year VIP Pass</h4>
+                <p id="summary-item-duration">4K Ultra HD • Instant WhatsApp Setup</p>
+              </div>
+              <div class="summary-product-price" id="summary-unit-price">
+                ₹199
+              </div>
+            </div>
+
+            
+            </div>
+
+            <!-- Guarantee Refund Box -->
+            <div class="checkout-refund-card">
+              <div class="checkout-refund-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <span>100% Replacement & Refund Guarantee</span>
+              </div>
+              <p class="checkout-refund-desc">
+                Zero risk. Instant replacement on WhatsApp for any login issue. 24-hour guaranteed UPI pro-rated refund.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ORDER CONFIRMATION -->
+  <div class="modal-backdrop" id="confirmation-modal" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 580px;">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="confirmation-modal-body">
+        <!-- Rendered after order placement -->
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- MODAL: TRACK ORDER STATUS -->
+  <div class="modal-backdrop" id="track-order-modal" role="dialog" aria-modal="true" aria-labelledby="track-modal-title">
+    <div class="modal-container" style="max-width: 520px; background: #ffffff !important; color: #0f172a !important; border-radius: 24px !important; padding: 32px 28px !important;">
+      <button class="modal-close-btn" aria-label="Close modal" style="color: #64748b !important; background: #f1f5f9 !important;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      
+      <div style="text-align: center; margin-bottom: 22px;">
+        <div style="width: 54px; height: 54px; background: #eaefe9; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: #153e2b;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 id="track-modal-title" style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 6px;">Track Your Order Status</h3>
+        <p style="font-size: 0.88rem; color: #64748b; margin: 0;">Enter your Order Reference ID (e.g. #STV-19689) or registered 10-digit WhatsApp number.</p>
+      </div>
+
+      <form id="track-order-form" style="margin-bottom: 16px;">
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="track-order-search-input" class="form-control d2c-input" placeholder="e.g. STV-19689 or 9876543210" required style="flex: 1; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 12px 16px; font-weight: 600;" />
+          <button type="submit" class="btn btn-primary" style="background: #153e2b; color: #ffffff; border-radius: 12px; padding: 0 20px; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer;">Check Status</button>
+        </div>
+      </form>
+
+      <div id="track-order-result-box">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: LEGAL POLICIES -->
+  <div class="modal-backdrop" id="policy-modal" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 640px;">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h3 id="policy-modal-title" style="font-size: 1.5rem; margin-bottom: 20px;">Policy</h3>
+      <div id="policy-modal-body" style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+        <!-- Policy content populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Application Script -->
+  <script type="module" src="/src/js/app.js"></script>
+
+  
+
+    <!-- Console Main Content Body -->
+    <div class="admin-body">
+      <!-- Analytics Metrics Cards -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Total Client Orders</span>
+          <span class="admin-stat-val" id="stat-total-orders">0</span>
+          <span class="admin-stat-sub">Recorded on StreamPass</span>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Total Sales Volume</span>
+          <span class="admin-stat-val" id="stat-total-sales">₹0</span>
+          <span class="admin-stat-sub">Gross Order Value</span>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Myntra E-Gift Cards</span>
+          <span class="admin-stat-val" id="stat-myntra-count">0</span>
+          <span class="admin-stat-sub" id="stat-myntra-val">₹0 Face Value</span>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Amazon Pay Codes</span>
+          <span class="admin-stat-val" id="stat-amazon-count">0</span>
+          <span class="admin-stat-sub" id="stat-amazon-val">₹0 Claim Value</span>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Pending Activation</span>
+          <span class="admin-stat-val" style="color: #fbbf24;" id="stat-pending-count">0</span>
+          <span class="admin-stat-sub">Needs Credentials Dispatch</span>
+        </div>
+      </div>
+
+      <!-- Controls: Filters & Search Bar -->
+      <div class="admin-controls-row">
+        <div class="admin-filter-tabs">
+          <button type="button" class="admin-tab active" data-filter="all">All Orders</button>
+          <button type="button" class="admin-tab" data-filter="pending">Pending</button>
+          <button type="button" class="admin-tab" data-filter="fulfilled">Fulfilled</button>
+          <button type="button" class="admin-tab" data-filter="myntra">Myntra Cards</button>
+          <button type="button" class="admin-tab" data-filter="amazon">Amazon Vouchers</button>
+        </div>
+
+        <div class="admin-search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="admin-search-input" placeholder="Search Client, Phone, Card No, PIN..." />
+        </div>
+      </div>
+
+      <!-- Client Orders & Voucher Liquidation Table -->
+      <div class="admin-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order ID &amp; Date</th>
+              <th>Client Contact Details</th>
+              <th>Platform &amp; Subscribed Plan</th>
+              <th>Gift Card / Voucher Details</th>
+              <th>Fulfilment Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-orders-tbody">
+            <!-- Dynamic order rows rendered here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
