@@ -389,6 +389,39 @@
             <span class="platform-name">Crunchyroll</span>
           </div>
         </div>
+        
+        <!-- DYNAMIC PLATFORM DETAILS INSPECTOR -->
+        <div class="platform-details-box" id="platform-details-box" style="margin-top: 32px; background: #ffffff; border: 2px solid var(--accent-red); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-md);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color);">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <img id="details-platform-logo" src="/assets/logos/netflix.jpg" style="width: 56px; height: 56px; border-radius: 12px; object-fit: contain; background: #ffffff; padding: 4px; border: 1px solid var(--border-color);" alt="Platform Logo" />
+              <div>
+                <h3 id="details-platform-name" style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Netflix 4K Ultra HD</h3>
+                <p id="details-platform-sub" style="font-size: 0.88rem; color: var(--accent-green); font-weight: 600;">✓ Verified Active Pass • 5-15 Min WhatsApp Delivery</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="btn btn-secondary details-select-btn" data-plan="6-months" data-price="199" id="btn-details-6m">Select 6 Months (₹199)</button>
+              <button class="btn btn-primary details-select-btn" data-plan="1-year" data-price="340" id="btn-details-1y">Select 1 Year (₹340)</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+            <div style="background: var(--bg-secondary); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border-color);">
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 4px;">📺 Video Quality</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);" id="details-quality-text">4K Ultra HD + HDR10+</div>
+            </div>
+            <div style="background: var(--bg-secondary); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border-color);">
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 4px;">📱 Devices Supported</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Smart TV, Laptop, Mobile, Firestick</div>
+            </div>
+            <div style="background: var(--bg-secondary); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border-color);">
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 4px;">🔒 Profile Security</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Dedicated Profile PIN Protection</div>
+            </div>
+          </div>
+        </div>
+
         <p class="platform-disclaimer">
           Platform availability depends on the selected plan. We are not affiliated with or endorsed by the respective OTT platforms unless explicitly stated.
         </p>
@@ -809,5 +842,33 @@
 
   <!-- App Script -->
   <script type="module" src="/src/js/app.js"></script>
+
+  <!-- VIP OFFER POP-UP MODAL (AUTO OPEN ON WEB OPEN) -->
+  <div class="modal-overlay active" id="vip-promo-modal" style="z-index: 3000;">
+    <div class="modal-container" style="max-width: 520px; border-top: 4px solid var(--accent-red); padding: 0; overflow: hidden;">
+      <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 24px; position: relative;">
+        <button class="modal-close-btn" id="vip-popup-close-btn" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.15); color: #ffffff; border: none; font-size: 1rem;">✕</button>
+        <div style="font-size: 0.75rem; font-weight: 800; color: #f59e0b; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">🔥 SPECIAL POPULAR OFFER</div>
+        <h3 style="font-size: 1.5rem; font-weight: 800; color: #ffffff; margin-bottom: 8px;">All-in-One OTT Yearly Pass</h3>
+        <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">Get 1 Year Unlimited Access to Netflix 4K, Prime Video, JioHotstar, ZEE5 & Sony LIV under 1 simple pass!</p>
+      </div>
+      <div style="padding: 24px; background: #ffffff;">
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 2.25rem; font-weight: 800; color: var(--accent-red);">₹1499</span>
+          <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">/ 1 Year (Save ₹10,000+)</span>
+        </div>
+        <ul style="list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: var(--text-secondary);">
+          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Netflix + Prime + JioHotstar + ZEE5 + Sony LIV</li>
+          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> 4K Ultra HD Multi-Device Streaming</li>
+          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Dedicated Locked Profile with PIN</li>
+          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Quick 5-Min WhatsApp Delivery & Full Warranty</li>
+        </ul>
+        <div style="display: flex; gap: 12px;">
+          <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-claim-vip-popup">Claim ₹1499 Combo Deal</button>
+          <button type="button" class="btn btn-secondary" id="btn-dismiss-vip-popup">Dismiss</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

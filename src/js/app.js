@@ -1073,6 +1073,9 @@ function closeModal(modalEl) {
  * 13. Event Listeners Setup
  */
 function setupEventListeners() {
+  initPlatformSelectionHandlers();
+  initAutoVipPopup();
+
 
   // Bind hero visual deck items to open checkout with corresponding platform
   document.querySelectorAll('.visual-platform-item').forEach(item => {
@@ -2109,4 +2112,78 @@ function initLiveSalesTicker() {
       toast.style.transform = 'translateY(0)';
     }, 400);
   }, 4500);
+}
+
+// Interactive Platform Details Inspector & Auto VIP Popup
+function updatePlatformDetailsBox(platformId) {
+  const pData = {"netflix":{"name":"Netflix 4K Ultra HD","logo":"/assets/logos/netflix.jpg","quality":"4K Ultra HD + HDR10+"},"prime":{"name":"Prime Video","logo":"/assets/logos/prime.png","quality":"4K Ultra HD + Dolby Vision"},"hotstar":{"name":"JioHotstar Super","logo":"/assets/logos/hotstar.jpeg","quality":"4K Ultra HD + Dolby Atmos"},"youtube":{"name":"YouTube Premium","logo":"/assets/logos/youtube.jpeg","quality":"1080p Premium + Background Play + Ad-Free"},"spotify":{"name":"Spotify Hi-Fi","logo":"/assets/logos/spotify.jpeg","quality":"320kbps Very High Quality Audio + Ad-Free"},"zee5":{"name":"ZEE5 Premium 4K","logo":"/assets/logos/zee5.jpeg","quality":"4K Ultra HD + 12 Languages"},"sonyliv":{"name":"Sony LIV Premium","logo":"/assets/logos/sonyliv.jpeg","quality":"Full HD 1080p + Live Sports"},"aha":{"name":"Aha Gold","logo":"/assets/logos/aha.png","quality":"4K Ultra HD 100% Regional Movies"},"appletv":{"name":"Apple TV+ Premium","logo":"/assets/logos/appletv.png","quality":"4K Ultra HD + Spatial Audio"},"crunchyroll":{"name":"Crunchyroll Mega Fan","logo":"/assets/logos/crunchyroll.jpeg","quality":"1080p HD Offline Anime Downloads"}}[platformId] || {"netflix":{"name":"Netflix 4K Ultra HD","logo":"/assets/logos/netflix.jpg","quality":"4K Ultra HD + HDR10+"},"prime":{"name":"Prime Video","logo":"/assets/logos/prime.png","quality":"4K Ultra HD + Dolby Vision"},"hotstar":{"name":"JioHotstar Super","logo":"/assets/logos/hotstar.jpeg","quality":"4K Ultra HD + Dolby Atmos"},"youtube":{"name":"YouTube Premium","logo":"/assets/logos/youtube.jpeg","quality":"1080p Premium + Background Play + Ad-Free"},"spotify":{"name":"Spotify Hi-Fi","logo":"/assets/logos/spotify.jpeg","quality":"320kbps Very High Quality Audio + Ad-Free"},"zee5":{"name":"ZEE5 Premium 4K","logo":"/assets/logos/zee5.jpeg","quality":"4K Ultra HD + 12 Languages"},"sonyliv":{"name":"Sony LIV Premium","logo":"/assets/logos/sonyliv.jpeg","quality":"Full HD 1080p + Live Sports"},"aha":{"name":"Aha Gold","logo":"/assets/logos/aha.png","quality":"4K Ultra HD 100% Regional Movies"},"appletv":{"name":"Apple TV+ Premium","logo":"/assets/logos/appletv.png","quality":"4K Ultra HD + Spatial Audio"},"crunchyroll":{"name":"Crunchyroll Mega Fan","logo":"/assets/logos/crunchyroll.jpeg","quality":"1080p HD Offline Anime Downloads"}}['netflix'];
+  const nameEl = document.getElementById('details-platform-name');
+  const logoEl = document.getElementById('details-platform-logo');
+  const qualityEl = document.getElementById('details-quality-text');
+
+  if (nameEl) nameEl.textContent = pData.name;
+  if (logoEl) logoEl.src = pData.logo;
+  if (qualityEl) qualityEl.textContent = pData.quality;
+
+  state.checkout.platformId = platformId;
+  const select = document.getElementById('checkout-platform-select');
+  if (select) select.value = platformId;
+  updateCheckoutSummary();
+}
+
+function initPlatformSelectionHandlers() {
+  document.querySelectorAll('.platforms-grid .platform-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.platforms-grid .platform-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      const pId = card.getAttribute('data-platform');
+      updatePlatformDetailsBox(pId);
+      document.getElementById('platform-details-box')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+
+  document.querySelectorAll('.details-select-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const planId = btn.getAttribute('data-plan');
+      if (planId) {
+        state.checkout.planId = planId;
+        const planSelect = document.getElementById('checkout-plan-select');
+        if (planSelect) planSelect.value = planId;
+      }
+      updateCheckoutSummary();
+      const modal = document.getElementById('checkout-modal');
+      if (modal) modal.classList.add('active');
+    });
+  });
+}
+
+function initAutoVipPopup() {
+  const vipModal = document.getElementById('vip-promo-modal');
+  const closeBtn = document.getElementById('vip-popup-close-btn');
+  const dismissBtn = document.getElementById('btn-dismiss-vip-popup');
+  const claimBtn = document.getElementById('btn-claim-vip-popup');
+
+  if (!vipModal) return;
+
+  // Auto open after 1 second
+  setTimeout(() => {
+    vipModal.classList.add('active');
+  }, 1000);
+
+  const closeVip = () => vipModal.classList.remove('active');
+  closeBtn?.addEventListener('click', closeVip);
+  dismissBtn?.addEventListener('click', closeVip);
+
+  claimBtn?.addEventListener('click', () => {
+    closeVip();
+    state.checkout.platformId = 'all-in-one';
+    state.checkout.planId = 'all-in-one';
+    const pSelect = document.getElementById('checkout-platform-select');
+    const dSelect = document.getElementById('checkout-plan-select');
+    if (pSelect) pSelect.value = 'all-in-one';
+    if (dSelect) dSelect.value = 'all-in-one';
+    updateCheckoutSummary();
+    const checkoutModal = document.getElementById('checkout-modal');
+    if (checkoutModal) checkoutModal.classList.add('active');
+  });
 }
