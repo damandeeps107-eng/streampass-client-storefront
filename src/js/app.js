@@ -1073,6 +1073,35 @@ function closeModal(modalEl) {
  * 13. Event Listeners Setup
  */
 function setupEventListeners() {
+
+  // Modal Close Handlers (X button, Backdrop click, ESC key)
+  const checkoutModal = document.getElementById('checkout-modal');
+  const trackModal = document.getElementById('track-order-modal');
+
+  document.getElementById('checkout-close-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (checkoutModal) checkoutModal.classList.remove('active');
+  });
+
+  document.getElementById('track-close-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (trackModal) trackModal.classList.remove('active');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === checkoutModal) checkoutModal.classList.remove('active');
+    if (e.target === trackModal) trackModal.classList.remove('active');
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (checkoutModal) checkoutModal.classList.remove('active');
+      if (trackModal) trackModal.classList.remove('active');
+    }
+  });
+  
   // Bind platform-card click to open checkout modal with selected OTT
   document.querySelectorAll(".platform-card").forEach(card => {
     card.addEventListener("click", () => {
