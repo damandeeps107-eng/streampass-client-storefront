@@ -701,19 +701,19 @@
         </div>
 
         <div>
-          <div class="footer-title">Legal</div>
+          <div class="footer-title">Legal & Policies</div>
           <ul class="footer-links">
-            <li><a href="#" class="footer-link">Terms & Conditions</a></li>
-            <li><a href="#" class="footer-link">Privacy Policy</a></li>
-            <li><a href="#" class="footer-link">Refund Policy</a></li>
+            <li><a href="#" class="footer-link" id="link-terms">Terms & Conditions</a></li>
+            <li><a href="#" class="footer-link" id="link-privacy">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link" id="link-refund">Refund Policy</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="footer-title">Support</div>
+          <div class="footer-title">Account Support</div>
           <ul class="footer-links">
-            <li><a href="#" class="footer-link" id="footer-link-whatsapp">WhatsApp Support</a></li>
             <li><a href="#" class="footer-link" id="footer-link-track">Track Order Status</a></li>
+            <li><a href="#" class="footer-link" id="footer-link-help-faqs">Help & FAQs</a></li>
           </ul>
         </div>
       </div>
@@ -894,6 +894,59 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <!-- LEGAL POLICIES MODAL (TERMS, PRIVACY, REFUND) -->
+  <div class="modal-overlay" id="legal-modal">
+    <div class="modal-container" style="max-width: 680px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="legal-modal-title">Terms & Conditions</h3>
+        <button class="modal-close-btn" id="legal-close-btn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-tabs" style="margin-bottom: 20px;">
+          <button type="button" class="modal-tab-btn active" id="tab-legal-terms">Terms & Conditions</button>
+          <button type="button" class="modal-tab-btn" id="tab-legal-privacy">Privacy Policy</button>
+          <button type="button" class="modal-tab-btn" id="tab-legal-refund">Refund Policy</button>
+        </div>
+
+        <!-- Terms Panel -->
+        <div class="payment-panel active" id="panel-legal-terms" style="background: #ffffff; padding: 0;">
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">1. Account Usage & PIN Security</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">Each StreamPass subscription provides dedicated profile access with individual PIN protection. Users must not modify shared master account credentials or share assigned profiles with unauthorized third parties.</p>
+
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">2. Device Limits & Fair Usage</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">Individual 6-Months (₹199) and 1-Year (₹340) passes permit 1 active screen login at a time. The All-in-One Yearly Combo (₹1499) allows up to 4 simultaneous screen logins.</p>
+
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">3. Service Duration & Replacement Warranty</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">All passes carry a 100% full-term replacement warranty. In case of any technical issue, our support bot or merchant admin will replace credentials within 15–30 minutes.</p>
+        </div>
+
+        <!-- Privacy Panel -->
+        <div class="payment-panel" id="panel-legal-privacy" style="background: #ffffff; padding: 0;">
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">1. Data Encryption & Security</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">We utilize 256-bit SSL encryption to safeguard all user transactions and communications. Your phone number and email are used exclusively for credential delivery and order tracking.</p>
+
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">2. Zero Third-Party Sharing</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">StreamPass never sells, rents, or shares your contact details with external advertisers or telemarketers.</p>
+
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">3. Cookies & Local Storage</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">We use browser local storage solely to keep track of your active orders and support bot chat history for your convenience.</p>
+        </div>
+
+        <!-- Refund Panel -->
+        <div class="payment-panel" id="panel-legal-refund" style="background: #ffffff; padding: 0;">
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">1. 100% Money-Back & Replacement Guarantee</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">If your OTT credentials fail to activate or experience issues that cannot be resolved within 24 hours of purchase, you are eligible for an immediate full refund or fresh replacement account.</p>
+
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">2. Refund Processing Time</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">Approved refunds are processed via original payment method (Myntra Card credit / Amazon Voucher replacement / UPI transfer) within 24 to 48 business hours.</p>
+
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">3. How to Request a Refund</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">You can request a refund by using the Support Bot or by searching your Order ID in the Track Order window.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

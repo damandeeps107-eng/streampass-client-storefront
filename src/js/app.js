@@ -1073,6 +1073,8 @@ function closeModal(modalEl) {
  * 13. Event Listeners Setup
  */
 function setupEventListeners() {
+  initLegalModalHandlers();
+
 
   // Bind entire plan-card click to select plan & open checkout modal
   document.querySelectorAll('.plans-grid .plan-card').forEach(card => {
@@ -2213,5 +2215,81 @@ function initAutoVipPopup() {
     updateCheckoutSummary();
     const checkoutModal = document.getElementById('checkout-modal');
     if (checkoutModal) checkoutModal.classList.add('active');
+  });
+}
+
+// Legal Policy Modal Event Listeners & Tab Switcher
+function openLegalModal(tabName) {
+  const modal = document.getElementById('legal-modal');
+  const titleEl = document.getElementById('legal-modal-title');
+  if (!modal) return;
+
+  const tabTerms = document.getElementById('tab-legal-terms');
+  const tabPrivacy = document.getElementById('tab-legal-privacy');
+  const tabRefund = document.getElementById('tab-legal-refund');
+
+  const panelTerms = document.getElementById('panel-legal-terms');
+  const panelPrivacy = document.getElementById('panel-legal-privacy');
+  const panelRefund = document.getElementById('panel-legal-refund');
+
+  [tabTerms, tabPrivacy, tabRefund].forEach(t => t?.classList.remove('active'));
+  [panelTerms, panelPrivacy, panelRefund].forEach(p => p?.classList.remove('active'));
+
+  if (tabName === 'privacy') {
+    tabPrivacy?.classList.add('active');
+    panelPrivacy?.classList.add('active');
+    if (titleEl) titleEl.textContent = 'Privacy Policy';
+  } else if (tabName === 'refund') {
+    tabRefund?.classList.add('active');
+    panelRefund?.classList.add('active');
+    if (titleEl) titleEl.textContent = 'Refund & Replacement Policy';
+  } else {
+    tabTerms?.classList.add('active');
+    panelTerms?.classList.add('active');
+    if (titleEl) titleEl.textContent = 'Terms & Conditions';
+  }
+
+  modal.classList.add('active');
+}
+
+function initLegalModalHandlers() {
+  const legalModal = document.getElementById('legal-modal');
+
+  document.getElementById('link-terms')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openLegalModal('terms');
+  });
+
+  document.getElementById('link-privacy')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openLegalModal('privacy');
+  });
+
+  document.getElementById('link-refund')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openLegalModal('refund');
+  });
+
+  document.getElementById('footer-link-help-faqs')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('faqs')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('tab-legal-terms')?.addEventListener('click', () => openLegalModal('terms'));
+  document.getElementById('tab-legal-privacy')?.addEventListener('click', () => openLegalModal('privacy'));
+  document.getElementById('tab-legal-refund')?.addEventListener('click', () => openLegalModal('refund'));
+
+  document.getElementById('legal-close-btn')?.addEventListener('click', () => {
+    legalModal?.classList.remove('active');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === legalModal) legalModal?.classList.remove('active');
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && legalModal?.classList.contains('active')) {
+      legalModal.classList.remove('active');
+    }
   });
 }
