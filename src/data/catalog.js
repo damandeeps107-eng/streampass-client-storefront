@@ -30,7 +30,8 @@ export const FEATURED_DEAL = {
     "Multiple OTT platforms included",
     "Fast activation within 15-30 minutes",
     "24/7 Interactive Support Bot & instant ticket system",
-    "Full replacement guarantee throughout active duration"
+    "🔒 100% No Logout Guarantee — Dedicated Locked Profile",
+    "Full replacement & pro-rated refund guarantee throughout active duration"
   ],
   disclaimer: "Availability, supported quality and device limits depend on the selected subscription/service.",
   image: "/assets/ott_combo_deal.jpg",
@@ -66,7 +67,7 @@ export const PLATFORMS_DATA = [
         warranty: "180 Days Full Replacement Warranty",
         features: [
           "4K Ultra HD + HDR + Dolby Atmos",
-          "Dedicated PIN-protected profile",
+          "Dedicated PIN-protected profile (🔒 100% No Logout Guarantee)",
           "Stream on 2 devices simultaneously",
           "Smart TV, Firestick, PC & Mobile supported",
           "180 Days full replacement warranty"
@@ -88,7 +89,7 @@ export const PLATFORMS_DATA = [
         popular: true,
         features: [
           "4K Ultra HD + HDR + Spatial Audio",
-          "Dedicated PIN-protected profiles",
+          "Dedicated PIN-protected profiles (🔒 100% No Logout Guarantee)",
           "Stream on up to 4 screens simultaneously",
           "Smart TV, Firestick, PC & Mobile supported",
           "365 Days full replacement warranty"
@@ -647,7 +648,12 @@ export const WHY_CHOOSE_US = [
   },
   {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
-    title: "Secure Ordering",
+    title: "Zero Logout Guarantee",
+    description: "Dedicated PIN-locked profiles with 100% account stability. Zero sudden logouts, zero password errors, backed by active warranty."
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    title: "Secure & Protected",
     description: "100% Replacement warranty on active subscriptions with direct automated dispatch and pro-rated UPI refund protection."
   }
 ];
@@ -671,6 +677,11 @@ export const HOW_IT_WORKS = [
 ];
 
 export const FAQS = [
+  {
+    question: "Will I face any Logout issue or Screen limit error?",
+    answer: "No! Absolutely ZERO logout issues. We provide dedicated PIN-protected profile slots and genuine access passes. Unlike unverified resellers where accounts get logged out every 2 days, StreamPass guarantees 100% uninterrupted stable binging for the full validity (180 to 365 days). If any profile issue ever occurs, our technicians swap it in 15–30 minutes or issue a direct UPI refund."
+  },
+
   {
     question: "How quickly will my subscription be activated?",
     answer: "Your subscription credentials and setup instructions are dispatched directly to your registered contact number within 15 to 30 minutes of order confirmation during operational hours (9 AM – 11 PM IST). Orders placed late night are prioritized first thing next morning."
