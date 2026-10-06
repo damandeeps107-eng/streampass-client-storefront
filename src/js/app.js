@@ -2124,6 +2124,8 @@ function updatePlatformDetailsBox(platformId) {
   if (nameEl) nameEl.textContent = pData.name;
   if (logoEl) logoEl.src = pData.logo;
   if (qualityEl) qualityEl.textContent = pData.quality;
+  const deviceEl = document.getElementById("details-device-text");
+  if (deviceEl) deviceEl.textContent = platformId === "all-in-one" ? "4 Screens Multi-Device Login Allowed" : "1 Device Screen (Smart TV / Mobile / PC)";
 
   state.checkout.platformId = platformId;
   const select = document.getElementById('checkout-platform-select');

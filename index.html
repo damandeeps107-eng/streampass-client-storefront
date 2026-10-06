@@ -229,7 +229,7 @@
             <ul class="plan-features">
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Choice of Netflix, Prime, or Hotstar</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> HD / Ultra HD Streaming Quality</li>
-              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Dedicated Profile PIN Protection</li>
+              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> 📱 <strong>1 Device Login</strong> (Smart TV, Laptop or Phone)</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Quick 5-15 Min WhatsApp Delivery</li>
             </ul>
             <div class="plan-footer">
@@ -253,7 +253,7 @@
             <ul class="plan-features">
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Choice of Netflix, Prime, or Hotstar</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Full 365 Days Uninterrupted Access</li>
-              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Smart TV, Mobile & PC Supported</li>
+              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> 📱 <strong>1 Device Login</strong> (Smart TV, Laptop or Phone)</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Replacement Warranty Included</li>
             </ul>
             <div class="plan-footer">
@@ -277,7 +277,7 @@
             </div>
             <ul class="plan-features">
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Access to Netflix, Prime, Hotstar, ZEE5 & Sony LIV</li>
-              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> 4K Ultra HD Multi-Device Streaming</li>
+              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> 📺 <strong>Multi-Device Login</strong> (Up to 4 Screens Simultaneously)</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Priority 5-Min Delivery & 24/7 WhatsApp Support</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Full Term Replacement Warranty</li>
             </ul>
@@ -843,32 +843,57 @@
   <!-- App Script -->
   <script type="module" src="/src/js/app.js"></script>
 
-  <!-- VIP OFFER POP-UP MODAL (AUTO OPEN ON WEB OPEN) -->
+  
+  <!-- EYE-CATCHING VIP POP-UP MODAL WITH CINEMA ROOM IMAGE & DEVICE LIMIT -->
   <div class="modal-overlay active" id="vip-promo-modal" style="z-index: 3000;">
-    <div class="modal-container" style="max-width: 520px; border-top: 4px solid var(--accent-red); padding: 0; overflow: hidden;">
-      <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 24px; position: relative;">
-        <button class="modal-close-btn" id="vip-popup-close-btn" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.15); color: #ffffff; border: none; font-size: 1rem;">✕</button>
-        <div style="font-size: 0.75rem; font-weight: 800; color: #f59e0b; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">🔥 SPECIAL POPULAR OFFER</div>
-        <h3 style="font-size: 1.5rem; font-weight: 800; color: #ffffff; margin-bottom: 8px;">All-in-One OTT Yearly Pass</h3>
-        <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">Get 1 Year Unlimited Access to Netflix 4K, Prime Video, JioHotstar, ZEE5 & Sony LIV under 1 simple pass!</p>
-      </div>
-      <div style="padding: 24px; background: #ffffff;">
-        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
-          <span style="font-size: 2.25rem; font-weight: 800; color: var(--accent-red);">₹1499</span>
-          <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">/ 1 Year (Save ₹10,000+)</span>
+    <div class="modal-container" style="max-width: 720px; padding: 0; overflow: hidden; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);">
+      <div style="display: grid; grid-template-columns: 1fr 1.15fr; background: #ffffff;">
+        <!-- Left Image Column -->
+        <div style="position: relative; background: #090d16; min-height: 280px; overflow: hidden;">
+          <img src="/assets/vip_popcorn_cinema.jpg" alt="Home Cinema Setup" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9);" />
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, transparent 60%);"></div>
+          <div style="position: absolute; bottom: 16px; left: 16px; right: 16px; color: #ffffff;">
+            <span style="background: rgba(220, 38, 38, 0.9); color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 9999px; letter-spacing: 0.05em; text-transform: uppercase;">🍿 HOME CINEMA DEAL</span>
+            <div style="font-size: 1rem; font-weight: 800; color: #ffffff; margin-top: 6px;">Watch 10+ OTTs on Any TV or Phone</div>
+          </div>
         </div>
-        <ul style="list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: var(--text-secondary);">
-          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Netflix + Prime + JioHotstar + ZEE5 + Sony LIV</li>
-          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> 4K Ultra HD Multi-Device Streaming</li>
-          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Dedicated Locked Profile with PIN</li>
-          <li style="display: flex; gap: 8px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Quick 5-Min WhatsApp Delivery & Full Warranty</li>
-        </ul>
-        <div style="display: flex; gap: 12px;">
-          <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-claim-vip-popup">Claim ₹1499 Combo Deal</button>
-          <button type="button" class="btn btn-secondary" id="btn-dismiss-vip-popup">Dismiss</button>
+
+        <!-- Right Offer Column -->
+        <div style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <button class="modal-close-btn" id="vip-popup-close-btn" style="position: absolute; top: 12px; right: 12px; background: var(--bg-secondary); border: 1px solid var(--border-color); width: 28px; height: 28px;">✕</button>
+          
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 800; color: var(--accent-red); background: var(--accent-red-light); padding: 3px 10px; border-radius: 9999px; border: 1px solid var(--accent-red-border); margin-bottom: 8px; text-transform: uppercase;">
+              👑 MOST POPULAR YEARLY PASS
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">All-in-One OTT Combo Pass</h3>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Single pass for Netflix 4K, Prime Video, JioHotstar, ZEE5 & Sony LIV.</p>
+
+            <!-- Device Limit Highlight Box -->
+            <div style="background: var(--accent-blue-light); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 8px; padding: 8px 12px; margin-bottom: 14px; font-size: 0.8rem; font-weight: 700; color: var(--accent-blue); display: flex; align-items: center; gap: 6px;">
+              📺 <strong>DEVICE LIMIT:</strong> Multi-Device (Up to 4 Screens Simultaneous Login)
+            </div>
+
+            <div style="display: flex; align-items: baseline; gap: 6px; margin-bottom: 14px;">
+              <span style="font-size: 1.85rem; font-weight: 800; color: var(--accent-red);">₹1499</span>
+              <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">/ 1 Year (Save ₹10,000+)</span>
+            </div>
+
+            <ul style="list-style: none; margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; color: var(--text-secondary);">
+              <li style="display: flex; gap: 6px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> 5 Major OTTs: Netflix, Prime, Hotstar, ZEE5, Sony LIV</li>
+              <li style="display: flex; gap: 6px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Dedicated Locked Profiles with Private PIN</li>
+              <li style="display: flex; gap: 6px;"><span style="color: var(--accent-green); font-weight: 800;">✓</span> Quick 5-Min WhatsApp Delivery & Full Warranty</li>
+            </ul>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn btn-primary btn-block btn-sm" id="btn-claim-vip-popup" style="padding: 10px;">🚀 Claim ₹1499 Deal</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-dismiss-vip-popup">Dismiss</button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 </html>
