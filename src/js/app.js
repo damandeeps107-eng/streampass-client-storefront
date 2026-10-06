@@ -799,6 +799,15 @@ function getSelectedPlanDetails() {
 }
 
 function updateCheckoutSummary() {
+  const summaryOttName = document.getElementById("summary-ott-name");
+  const summaryPlanPrice = document.getElementById("summary-plan-price");
+  if (summaryOttName && planDetails) {
+    summaryOttName.textContent = planDetails.platformName || "Selected OTT Platform";
+  }
+  if (summaryPlanPrice && planDetails) {
+    summaryPlanPrice.innerHTML = SITE_CONFIG.currency + totalPrice + " / " + planDetails.duration;
+  }
+
   const planDetails = getSelectedPlanDetails();
   if (!planDetails) return;
 
@@ -1064,6 +1073,35 @@ function closeModal(modalEl) {
  * 13. Event Listeners Setup
  */
 function setupEventListeners() {
+  // Bind platform-card click to open checkout modal with selected OTT
+  document.querySelectorAll(".platform-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const platformId = card.getAttribute("data-platform");
+      if (platformId) {
+        state.checkout.platformId = platformId;
+        const platformSelect = document.getElementById("checkout-platform-select");
+        if (platformSelect) platformSelect.value = platformId;
+        updateCheckoutSummary();
+        const modal = document.getElementById("checkout-modal");
+        if (modal) modal.classList.add("active");
+      }
+    });
+  });
+  // Bind plan-select-btn click to open checkout modal with selected plan
+  document.querySelectorAll(".plan-select-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const planId = btn.getAttribute("data-plan");
+      if (planId) {
+        state.checkout.planId = planId;
+        const planSelect = document.getElementById("checkout-plan-select");
+        if (planSelect) planSelect.value = planId;
+        updateCheckoutSummary();
+      }
+      const modal = document.getElementById("checkout-modal");
+      if (modal) modal.classList.add("active");
+    });
+  });
+
 
   // Extra buttons wiring
   document.getElementById('hero-cta-contact-us')?.addEventListener('click', () => {

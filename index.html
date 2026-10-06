@@ -677,6 +677,17 @@
       </div>
       <div class="modal-body">
         <form id="checkout-form">
+          <!-- Selected OTT & Price Banner -->
+          <div class="checkout-summary-banner" id="checkout-summary-banner" style="background: var(--bg-secondary); border: 1px solid var(--accent-red-border); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">SELECTED OTT PLATFORM</div>
+              <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary);" id="summary-ott-name">Netflix 4K Ultra HD</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">TOTAL PRICE</div>
+              <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-red);" id="summary-plan-price">₹199 <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted);">/ 6 Months</span></div>
+            </div>
+          </div>
           <div class="form-group">
             <label class="form-label">Select Platform</label>
             <select class="form-select" id="checkout-platform-select" required>
@@ -712,28 +723,15 @@
           <div class="form-group">
             <label class="form-label">Payment Method</label>
             <div class="modal-tabs">
-              <button type="button" class="modal-tab-btn active" data-tab="upiqr">Direct UPI QR</button>
-              <button type="button" class="modal-tab-btn" data-tab="myntra">Myntra Card (₹30 Off)</button>
-              <button type="button" class="modal-tab-btn" data-tab="amazon">Amazon Voucher</button>
+              <button type="button" class="modal-tab-btn active" data-tab="myntra">🛍️ Myntra E-Gift Card (Instant ₹30 Off)</button>
+              <button type="button" class="modal-tab-btn" data-tab="amazon">📦 Amazon Gift Card / Voucher</button>
             </div>
           </div>
 
-          <!-- UPI QR Panel -->
-          <div class="payment-panel active" id="pay-panel-upiqr">
-            <div style="text-align: center;">
-              <div class="qr-box-wrapper">
-                <img id="checkout-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi%3A%2F%2Fpay%3Fpa%3Dstreampass%40upi%26pn%3DStreamPass%2520OTT%26am%3D199%26cu%3DINR" alt="UPI Payment QR" />
-              </div>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Scan with GPay / PhonePe / Paytm / BHIM to pay <strong id="checkout-qr-amount">₹199</strong></p>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Enter 12-Digit UPI UTR / Ref ID</label>
-              <input type="text" class="form-input" id="checkout-upi-utr" placeholder="12-digit transaction number" maxlength="12" />
-            </div>
-          </div>
+          
 
           <!-- Myntra Card Panel -->
-          <div class="payment-panel" id="pay-panel-myntra">
+          <div class="payment-panel active" id="pay-panel-myntra">
             <p style="font-size: 0.85rem; color: var(--accent-green); font-weight: 600; margin-bottom: 12px;">🎉 Instant ₹30 Discount Applied!</p>
             <div class="form-group">
               <label class="form-label">16-Digit Card Number</label>
