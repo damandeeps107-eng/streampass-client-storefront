@@ -1074,6 +1074,38 @@ function closeModal(modalEl) {
  */
 function setupEventListeners() {
 
+  // Bind hero visual deck items to open checkout with corresponding platform
+  document.querySelectorAll('.visual-platform-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const text = item.textContent.trim().toLowerCase();
+      let platformId = 'netflix';
+      if (text.includes('prime')) platformId = 'prime';
+      else if (text.includes('hotstar')) platformId = 'hotstar';
+      else if (text.includes('youtube')) platformId = 'youtube';
+      else if (text.includes('spotify')) platformId = 'spotify';
+      else if (text.includes('zee5')) platformId = 'zee5';
+      else if (text.includes('sony')) platformId = 'sonyliv';
+      else if (text.includes('aha')) platformId = 'aha';
+      else if (text.includes('apple')) platformId = 'appletv';
+
+      state.checkout.platformId = platformId;
+      const select = document.getElementById('checkout-platform-select');
+      if (select) select.value = platformId;
+      updateCheckoutSummary();
+      const modal = document.getElementById('checkout-modal');
+      if (modal) modal.classList.add('active');
+    });
+  });
+
+  // Bind feature cards to open checkout modal
+  document.querySelectorAll('#features .feature-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const modal = document.getElementById('checkout-modal');
+      if (modal) modal.classList.add('active');
+    });
+  });
+  
+
   // Modal Close Handlers (X button, Backdrop click, ESC key)
   const checkoutModal = document.getElementById('checkout-modal');
   const trackModal = document.getElementById('track-order-modal');
@@ -1134,17 +1166,17 @@ function setupEventListeners() {
 
   // Extra buttons wiring
   document.getElementById('hero-cta-contact-us')?.addEventListener('click', () => {
-    window.open('https://wa.me/919876543210?text=Hi%20StreamPass%20Support,%20I%20have%20a%20question%20about%20your%20OTT%20plans.', '_blank');
+    toggleSupportBot(true);
   });
   document.getElementById('final-cta-view-plans')?.addEventListener('click', () => {
     document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' });
   });
   document.getElementById('final-cta-support')?.addEventListener('click', () => {
-    window.open('https://wa.me/919876543210?text=Hi%20StreamPass%20Support,%20I%20have%20a%20question%20about%20your%20OTT%20plans.', '_blank');
+    toggleSupportBot(true);
   });
   document.getElementById('footer-link-whatsapp')?.addEventListener('click', (e) => {
     e.preventDefault();
-    window.open('https://wa.me/919876543210?text=Hi%20StreamPass%20Support', '_blank');
+    toggleSupportBot(true);
   });
   document.getElementById('footer-link-track')?.addEventListener('click', (e) => {
     e.preventDefault();

@@ -119,6 +119,7 @@
   margin-bottom: 20px;
 }
 
+/* HERO VISUAL DECK LOGO FIX */
 .visual-platform-item {
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -132,15 +133,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.visual-platform-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-red);
+  box-shadow: var(--shadow-md);
 }
 
 .visual-platform-item img {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 3px;
+  border: 1px solid var(--border-color);
 }
+
 
 .visual-status-box {
   background: #ffffff;
