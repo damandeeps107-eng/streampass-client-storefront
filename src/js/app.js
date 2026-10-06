@@ -899,7 +899,7 @@ function handleOrderSubmit(e) {
 
   let paymentDetails = {};
   if (state.checkout.paymentMethod === "myntra") {
-    const cardInput = document.getElementById("checkout-myntra-cardno");
+    const cardInput = document.getElementById("checkout-myntra-card") || document.getElementById("checkout-myntra-cardno");
     const pinInput = document.getElementById("checkout-myntra-pin");
     const expiryInput = document.getElementById("checkout-myntra-expiry");
     const balanceInput = document.getElementById("checkout-myntra-balance");

@@ -277,7 +277,7 @@
             </div>
             <ul class="plan-features">
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Access to Netflix, Prime, Hotstar, ZEE5 & Sony LIV</li>
-              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> 📺 <strong>Multi-Device Login</strong> (Up to 4 Screens Simultaneously)</li>
+              <li class="plan-feature-item"><span class="feature-check-icon">✓</span> 📺 <strong>Up to 4 Screens Simultaneous Login Allowed</strong> (Multi-Device)</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Priority 5-Min Delivery & 24/7 WhatsApp Support</li>
               <li class="plan-feature-item"><span class="feature-check-icon">✓</span> Full Term Replacement Warranty</li>
             </ul>
@@ -735,7 +735,7 @@
         <button class="modal-close-btn" id="checkout-close-btn">✕</button>
       </div>
       <div class="modal-body">
-        <form id="checkout-form">
+        <form id="checkout-form" autocomplete="off">
           <!-- Selected OTT & Price Banner -->
           <div class="checkout-summary-banner" id="checkout-summary-banner" style="background: var(--bg-secondary); border: 1px solid var(--accent-red-border); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
             <div>
@@ -775,12 +775,12 @@
 
           <div class="form-group">
             <label class="form-label">Your Full Name</label>
-            <input type="text" class="form-input" id="checkout-name" placeholder="Enter your name" required />
+            <input type="text" class="form-input" id="checkout-name" placeholder="Enter your full name" autocomplete="off" required />
           </div>
 
           <div class="form-group">
             <label class="form-label">WhatsApp Number (for delivery)</label>
-            <input type="tel" class="form-input" id="checkout-whatsapp" placeholder="e.g. 9876543210" required />
+            <input type="tel" class="form-input" id="checkout-whatsapp" placeholder="e.g. 9876543210" autocomplete="off" required />
           </div>
 
           <div class="form-group">
@@ -798,11 +798,11 @@
             <p style="font-size: 0.85rem; color: var(--accent-green); font-weight: 600; margin-bottom: 12px;">🎉 Instant ₹30 Discount Applied!</p>
             <div class="form-group">
               <label class="form-label">16-Digit Card Number</label>
-              <input type="text" class="form-input" id="checkout-myntra-card" placeholder="6001234567891024" />
+              <input type="text" class="form-input" id="checkout-myntra-card" placeholder="6001234567891024" autocomplete="off" />
             </div>
             <div class="form-group">
               <label class="form-label">6-Digit Card PIN</label>
-              <input type="password" class="form-input" id="checkout-myntra-pin" placeholder="123456" maxlength="6" />
+              <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-input" id="checkout-myntra-pin" placeholder="123456" maxlength="6" autocomplete="off" />
             </div>
           </div>
 
@@ -810,7 +810,7 @@
           <div class="payment-panel" id="pay-panel-amazon">
             <div class="form-group">
               <label class="form-label">Amazon Gift Card Claim Code</label>
-              <input type="text" class="form-input" id="checkout-amazon-code" placeholder="e.g. ABCD-1234-EFGH-5678" />
+              <input type="text" class="form-input" id="checkout-amazon-code" placeholder="e.g. ABCD-1234-EFGH-5678" autocomplete="off" />
             </div>
           </div>
 
