@@ -162,3 +162,38 @@
     justify-content: center;
   }
 }
+
+
+
+/* ==========================================================================
+   NUCLEAR MOBILE HEADER NAV OVERLAP FIX (GUARANTEED NO OVERLAP < 1024px)
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+  header .nav-menu,
+  header nav,
+  header .nav-links,
+  header ul.nav-links,
+  header nav.nav-menu,
+  .site-header .nav-menu,
+  .site-header .nav-links,
+  .nav-links,
+  .nav-menu {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
