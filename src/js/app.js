@@ -849,8 +849,12 @@ function updateCheckoutSummary() {
  * 11. Order Form Submission & Confirmation
  */
 
+
 function handleOrderSubmit(e) {
-  if (e) e.preventDefault();
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
 
   const nameInput = document.getElementById("checkout-name");
   const whatsappInput = document.getElementById("checkout-whatsapp");
@@ -862,14 +866,14 @@ function handleOrderSubmit(e) {
   if (!fullName) {
     alert("Please enter your Full Name.");
     nameInput?.focus();
-    return;
+    return false;
   }
 
   const cleanPhone = whatsapp.replace(/D/g, "");
   if (cleanPhone.length < 10) {
     alert("Please enter a valid 10-digit WhatsApp number.");
     whatsappInput?.focus();
-    return;
+    return false;
   }
 
   const email = cleanPhone + "@streampass.in";
@@ -891,14 +895,14 @@ function handleOrderSubmit(e) {
     const pin = pinInput ? pinInput.value.trim() : "";
 
     if (cardNo.replace(/D/g, "").length < 15) {
-      alert("Please enter a valid 16-digit Myntra Card Number.");
+      alert("Please enter your 16-digit Myntra Card Number.");
       cardInput?.focus();
-      return;
+      return false;
     }
     if (!pin || pin.length < 4) {
       alert("Please enter your 6-digit Myntra Card PIN.");
       pinInput?.focus();
-      return;
+      return false;
     }
 
     paymentDetails = {
@@ -916,7 +920,7 @@ function handleOrderSubmit(e) {
     if (!voucherCode || voucherCode.length < 5) {
       alert("Please enter your Amazon Gift Card / Voucher Code.");
       voucherInput?.focus();
-      return;
+      return false;
     }
 
     paymentDetails = {
@@ -927,43 +931,36 @@ function handleOrderSubmit(e) {
 
   const orderId = 'STV-' + Math.floor(10000 + Math.random() * 90000);
 
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span>Submitting Request...</span>';
+  state.checkout.lastOrder = {
+    orderId,
+    fullName,
+    whatsapp: '+91 ' + cleanPhone.slice(-10),
+    rawWhatsapp: cleanPhone,
+    email,
+    platformName: planDetails.platformName,
+    planName: planDetails.planName,
+    duration: planDetails.duration,
+    quantity: state.checkout.quantity || 1,
+    totalAmount: currentTotal,
+    notes: 'Web Order',
+    paymentDetails,
+    orderDate: new Date().toLocaleString(),
+    status: 'Pending'
+  };
+
+  // Close checkout modal
+  const checkoutModal = document.getElementById('checkout-modal');
+  if (checkoutModal) {
+    checkoutModal.classList.remove('active');
+    checkoutModal.style.display = 'none';
   }
 
-  setTimeout(() => {
-    state.checkout.lastOrder = {
-      orderId,
-      fullName,
-      whatsapp: '+91 ' + cleanPhone.slice(-10),
-      rawWhatsapp: cleanPhone,
-      email,
-      platformName: planDetails.platformName,
-      planName: planDetails.planName,
-      duration: planDetails.duration,
-      quantity: state.checkout.quantity || 1,
-      totalAmount: currentTotal,
-      notes: 'Web Order',
-      paymentDetails,
-      orderDate: new Date().toLocaleString(),
-      status: 'Pending'
-    };
+  // Save order to localStorage & sync with admin panel
+  saveNewClientOrder(state.checkout.lastOrder);
 
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span>Pay & Activate Subscription</span>';
-    }
-
-    // Close checkout modal
-    document.getElementById('checkout-modal')?.classList.remove('active');
-
-    // Save to localStorage & sync to admin panel
-    saveNewClientOrder(state.checkout.lastOrder);
-
-    // Show Confirmation Modal
-    renderConfirmationScreen(state.checkout.lastOrder);
-  }, 400);
+  // Instantly render & show Confirmation Modal with Track Order ID
+  renderConfirmationScreen(state.checkout.lastOrder);
+  return false;
 }
 
 function renderConfirmationScreen(order) {
@@ -973,29 +970,52 @@ function renderConfirmationScreen(order) {
 
   if (idEl) idEl.textContent = order.orderId;
   if (detailsEl) {
-    detailsEl.innerHTML = '<div style="margin-bottom: 6px;"><strong>Client Name:</strong> ' + order.fullName + '</div>' +
-      '<div style="margin-bottom: 6px;"><strong>WhatsApp Delivery:</strong> ' + order.whatsapp + '</div>' +
-      '<div style="margin-bottom: 6px;"><strong>Selected OTT:</strong> ' + order.platformName + ' (' + order.planName + ')</div>' +
-      '<div style="margin-bottom: 6px;"><strong>Payment Method:</strong> ' + order.paymentDetails.method + '</div>' +
-      '<div style="margin-bottom: 6px;"><strong>Total Amount:</strong> ₹' + order.totalAmount + '</div>' +
-      '<div style="color: var(--accent-green); font-weight: 700; margin-top: 10px;">🟡 Status: Under Review (5-15 Mins WhatsApp Delivery)</div>';
+    detailsEl.innerHTML = '<div style="margin-bottom: 8px; font-size: 0.92rem;"><strong>Client Name:</strong> ' + order.fullName + '</div>' +
+      '<div style="margin-bottom: 8px; font-size: 0.92rem;"><strong>WhatsApp Delivery:</strong> ' + order.whatsapp + '</div>' +
+      '<div style="margin-bottom: 8px; font-size: 0.92rem;"><strong>Selected OTT:</strong> ' + order.platformName + ' (' + order.planName + ')</div>' +
+      '<div style="margin-bottom: 8px; font-size: 0.92rem;"><strong>Payment Method:</strong> ' + order.paymentDetails.method + '</div>' +
+      '<div style="margin-bottom: 8px; font-size: 0.92rem;"><strong>Total Amount:</strong> ₹' + order.totalAmount + '</div>' +
+      '<div style="color: var(--accent-green); font-weight: 700; margin-top: 12px; background: var(--accent-green-light); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(22, 163, 74, 0.2);">🟡 Status: Under Review (5-15 Mins WhatsApp Delivery)</div>';
   }
 
-  document.getElementById('btn-confirm-track').onclick = () => {
-    confirmModal?.classList.remove('active');
-    const trackInput = document.getElementById('track-query-input');
-    if (trackInput) trackInput.value = order.orderId;
-    const trackModal = document.getElementById('track-order-modal');
-    if (trackModal) trackModal.classList.add('active');
-    document.getElementById('track-search-btn')?.click();
-  };
+  const btnTrack = document.getElementById('btn-confirm-track');
+  if (btnTrack) {
+    btnTrack.onclick = (e) => {
+      e.preventDefault();
+      if (confirmModal) {
+        confirmModal.classList.remove('active');
+        confirmModal.style.display = 'none';
+      }
+      const trackInput = document.getElementById('track-query-input');
+      if (trackInput) trackInput.value = order.orderId;
+      const trackModal = document.getElementById('track-order-modal');
+      if (trackModal) {
+        trackModal.classList.add('active');
+        trackModal.style.display = 'flex';
+      }
+      document.getElementById('track-search-btn')?.click();
+    };
+  }
 
-  document.getElementById('btn-confirm-close').onclick = () => {
-    confirmModal?.classList.remove('active');
-  };
+  const btnClose = document.getElementById('btn-confirm-close');
+  if (btnClose) {
+    btnClose.onclick = (e) => {
+      e.preventDefault();
+      if (confirmModal) {
+        confirmModal.classList.remove('active');
+        confirmModal.style.display = 'none';
+      }
+    };
+  }
 
-  if (confirmModal) confirmModal.classList.add('active');
+  if (confirmModal) {
+    confirmModal.classList.add('active');
+    confirmModal.style.display = 'flex';
+    confirmModal.style.opacity = '1';
+    confirmModal.style.visibility = 'visible';
+  }
 }
+
 
 
 function openModal(modalEl) {
@@ -1014,6 +1034,16 @@ function closeModal(modalEl) {
  * 13. Event Listeners Setup
  */
 function setupEventListeners() {
+
+  const checkoutFormEl = document.getElementById('checkout-form');
+  if (checkoutFormEl) {
+    checkoutFormEl.onsubmit = (e) => {
+      e.preventDefault();
+      handleOrderSubmit(e);
+      return false;
+    };
+  }
+  
   initLegalModalHandlers();
 
 
