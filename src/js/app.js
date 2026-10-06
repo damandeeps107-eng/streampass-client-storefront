@@ -1073,6 +1073,32 @@ function closeModal(modalEl) {
  * 13. Event Listeners Setup
  */
 function setupEventListeners() {
+
+  // Bind entire plan-card click to select plan & open checkout modal
+  document.querySelectorAll('.plans-grid .plan-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      document.querySelectorAll('.plans-grid .plan-card').forEach(c => c.classList.remove('active', 'selected'));
+      card.classList.add('active', 'selected');
+
+      const planId = card.getAttribute('data-plan') || '6-months';
+      state.checkout.planId = planId;
+      
+      if (planId === 'all-in-one') {
+        state.checkout.platformId = 'all-in-one';
+        const platformSelect = document.getElementById('checkout-platform-select');
+        if (platformSelect) platformSelect.value = 'all-in-one';
+      }
+
+      const planSelect = document.getElementById('checkout-plan-select');
+      if (planSelect) planSelect.value = planId;
+
+      updateCheckoutSummary();
+
+      const modal = document.getElementById('checkout-modal');
+      if (modal) modal.classList.add('active');
+    });
+  });
+  
   initPlatformSelectionHandlers();
   initAutoVipPopup();
 
