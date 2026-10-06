@@ -1282,17 +1282,49 @@ function setupEventListeners() {
     }
   });
 
-  // Mobile Menu Drawer
+  // Mobile Menu Drawer & Overlay
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const mobileDrawer = document.getElementById('mobile-drawer');
-  mobileToggle?.addEventListener('click', () => {
-    mobileDrawer?.classList.toggle('open');
+  const mobileOverlay = document.getElementById('mobile-drawer-overlay');
+  const mobileClose = document.getElementById('mobile-drawer-close');
+
+  function openMobileMenu() {
+    mobileDrawer?.classList.add('open', 'active');
+    mobileOverlay?.classList.add('active');
+  }
+
+  function closeMobileDrawer() {
+    mobileDrawer?.classList.remove('open', 'active');
+    mobileOverlay?.classList.remove('active');
+  }
+
+  mobileToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (mobileDrawer?.classList.contains('open') || mobileDrawer?.classList.contains('active')) {
+      closeMobileDrawer();
+    } else {
+      openMobileMenu();
+    }
   });
 
-  document.querySelectorAll('.mobile-drawer .nav-link').forEach(link => {
+  mobileClose?.addEventListener('click', () => {
+    closeMobileDrawer();
+  });
+
+  mobileOverlay?.addEventListener('click', () => {
+    closeMobileDrawer();
+  });
+
+  document.querySelectorAll('.drawer-nav-link, .mobile-drawer .nav-link').forEach(link => {
     link.addEventListener('click', () => {
       closeMobileDrawer();
     });
+  });
+
+  document.getElementById('mobile-nav-open-track')?.addEventListener('click', () => {
+    closeMobileDrawer();
+    const trackModal = document.getElementById('track-order-modal');
+    if (trackModal) openModal(trackModal);
   });
 
   // Policy Modals (Terms, Privacy, Refund)
@@ -1301,7 +1333,8 @@ function setupEventListeners() {
 }
 
 function closeMobileDrawer() {
-  document.getElementById('mobile-drawer')?.classList.remove('open');
+  document.getElementById('mobile-drawer')?.classList.remove('open', 'active');
+  document.getElementById('mobile-drawer-overlay')?.classList.remove('active');
 }
 
 /**

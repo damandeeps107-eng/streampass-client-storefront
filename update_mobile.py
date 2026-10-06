@@ -1,4 +1,79 @@
-/* HEADER STYLES */
+import os
+
+storefront_dir = '/Users/user/.gemini/antigravity-ide/brain/1e50b2ea-9de2-41f7-bb1c-ff81182ba123/streampass-client-storefront'
+
+# 1. Update index.html
+index_path = os.path.join(storefront_dir, 'index.html')
+with open(index_path, 'r', encoding='utf-8') as f:
+    html = f.read()
+
+new_drawer = '''  <!-- MOBILE DRAWER OVERLAY -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <span class="mobile-drawer-title">Navigation Menu</span>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close Menu">&times;</button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="#hero" class="drawer-nav-link active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="#plans" class="drawer-nav-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0"/><path d="M2 9.5h20"/></svg>
+        <span>Plans & Pricing</span>
+      </a>
+      <a href="#how-it-works" class="drawer-nav-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        <span>How It Works</span>
+      </a>
+      <a href="#reviews" class="drawer-nav-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Reviews & Ratings</span>
+      </a>
+      <a href="#faqs" class="drawer-nav-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>FAQ</span>
+      </a>
+    </div>
+    
+    <div class="mobile-drawer-actions">
+      <button class="btn btn-primary btn-block" id="mobile-nav-cta-order">
+        <span>Explore All Plans</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      
+      <div class="mobile-drawer-sub-actions">
+        <button class="drawer-sub-btn" id="mobile-nav-open-track">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Track Order</span>
+        </button>
+        <button class="drawer-sub-btn" id="mobile-nav-open-bot">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>Support</span>
+        </button>
+      </div>
+    </div>
+  </div>'''
+
+# Replace old drawer div in index.html
+start_tag = '<!-- MOBILE DRAWER -->'
+end_tag = '</main>'
+
+if start_tag in html and '<main>' in html:
+    prefix = html.split(start_tag)[0]
+    suffix = html.split('<main>')[1]
+    html = prefix + new_drawer + '\n\n  <main>' + suffix
+
+with open(index_path, 'w', encoding='utf-8') as f:
+    f.write(html)
+print('✅ index.html updated successfully!')
+
+# 2. Update header.css
+header_css_path = os.path.join(storefront_dir, 'src/styles/header.css')
+header_css_content = '''/* HEADER STYLES */
 .site-header {
   position: sticky;
   top: 0;
@@ -308,3 +383,31 @@
     cursor: pointer;
   }
 }
+'''
+
+with open(header_css_path, 'w', encoding='utf-8') as f:
+    f.write(header_css_content)
+print('✅ header.css updated successfully!')
+
+# 3. Clean up main.css so it doesn't conflict with header.css
+main_css_path = os.path.join(storefront_dir, 'src/styles/main.css')
+with open(main_css_path, 'r', encoding='utf-8') as f:
+    main_css = f.read()
+
+# Remove old .mobile-drawer rules in main.css
+lines = main_css.split('\n')
+filtered_lines = []
+skip = False
+for line in lines:
+    if 'PERFECT MOBILE HEADER & DRAWER CLOSE-BY-DEFAULT FIX' in line or '.mobile-drawer {' in line:
+        skip = True
+    if skip and '}' in line and not '.mobile-drawer' in line:
+        skip = False
+        continue
+    if not skip:
+        filtered_lines.append(line)
+
+with open(main_css_path, 'w', encoding='utf-8') as f:
+    f.write('\n'.join(filtered_lines))
+print('✅ main.css cleaned successfully!')
+
