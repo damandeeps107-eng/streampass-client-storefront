@@ -848,46 +848,31 @@ function updateCheckoutSummary() {
 /**
  * 11. Order Form Submission & Confirmation
  */
+
 function handleOrderSubmit(e) {
   if (e) e.preventDefault();
 
   const nameInput = document.getElementById("checkout-name");
   const whatsappInput = document.getElementById("checkout-whatsapp");
-  const emailInput = document.getElementById("checkout-email");
-  const deviceNotesInput = document.getElementById("checkout-notes");
-  const submitBtn = document.getElementById("btn-submit-order");
-
-  // Remove previous error highlights
-  document.querySelectorAll(".d2c-input").forEach(el => el.classList.remove("input-error"));
+  const submitBtn = document.querySelector("#checkout-form button[type='submit']") || document.getElementById("btn-submit-order");
 
   const fullName = nameInput ? nameInput.value.trim() : "";
   const whatsapp = whatsappInput ? whatsappInput.value.trim() : "";
-  const email = emailInput ? emailInput.value.trim() : "";
-  const notes = deviceNotesInput ? deviceNotesInput.value.trim() : "";
 
   if (!fullName) {
-    nameInput?.classList.add("input-error");
-    showToast("Please enter your Full Name.");
+    alert("Please enter your Full Name.");
     nameInput?.focus();
     return;
   }
 
-  // Validate phone: at least 10 digits
-  const cleanPhone = whatsapp.replace(/\D/g, "");
+  const cleanPhone = whatsapp.replace(/D/g, "");
   if (cleanPhone.length < 10) {
-    whatsappInput?.classList.add("input-error");
-    showToast("Please enter a valid WhatsApp number (10 digits).");
+    alert("Please enter a valid 10-digit WhatsApp number.");
     whatsappInput?.focus();
     return;
   }
 
-  if (!email || !email.includes("@")) {
-    emailInput?.classList.add("input-error");
-    showToast("Please enter a valid Email address.");
-    emailInput?.focus();
-    return;
-  }
-
+  const email = cleanPhone + "@streampass.in";
   const planDetails = getSelectedPlanDetails() || {
     platformName: "StreamPass OTT",
     planName: "VIP Pass",
@@ -895,43 +880,24 @@ function handleOrderSubmit(e) {
     price: 199
   };
 
-  const currentTotal = planDetails.price * state.checkout.quantity;
-
+  const currentTotal = planDetails.price * (state.checkout.quantity || 1);
   let paymentDetails = {};
+
   if (state.checkout.paymentMethod === "myntra") {
     const cardInput = document.getElementById("checkout-myntra-card") || document.getElementById("checkout-myntra-cardno");
     const pinInput = document.getElementById("checkout-myntra-pin");
-    const expiryInput = document.getElementById("checkout-myntra-expiry");
-    const balanceInput = document.getElementById("checkout-myntra-balance");
-    const sellingInput = document.getElementById("checkout-myntra-selling-price");
-    const checkedRedemption = document.querySelector('input[name="myntra-redemption-type"]:checked');
 
     const cardNo = cardInput ? cardInput.value.trim() : "";
     const pin = pinInput ? pinInput.value.trim() : "";
-    const expiry = expiryInput ? expiryInput.value.trim() : "";
-    const redemptionType = (checkedRedemption ? checkedRedemption.value : null) || document.getElementById("checkout-myntra-redemption-type")?.value || "Online";
-    const balance = (balanceInput && parseFloat(balanceInput.value)) ? parseFloat(balanceInput.value) : currentTotal;
-    const sellingPrice = (sellingInput && parseFloat(sellingInput.value)) ? parseFloat(sellingInput.value) : Math.round(balance * 0.92);
 
-    const cleanCard = cardNo.replace(/\D/g, "");
-    if (cleanCard.length < 15) {
-      cardInput?.classList.add("input-error");
-      showToast("Please enter a valid 16-digit Myntra Card Number.");
+    if (cardNo.replace(/D/g, "").length < 15) {
+      alert("Please enter a valid 16-digit Myntra Card Number.");
       cardInput?.focus();
       return;
     }
-    const cleanPin = pin.replace(/\D/g, "");
-    if (!cleanPin || cleanPin.length < 4) {
-      pinInput?.classList.add("input-error");
-      showToast("Please enter your Myntra Card PIN (4-6 digits).");
+    if (!pin || pin.length < 4) {
+      alert("Please enter your 6-digit Myntra Card PIN.");
       pinInput?.focus();
-      return;
-    }
-    const cleanExpiry = expiry.trim();
-    if (!cleanExpiry || cleanExpiry.length < 2) {
-      expiryInput?.classList.add("input-error");
-      showToast("Please enter Expiry Date (MM/YY).");
-      expiryInput?.focus();
       return;
     }
 
@@ -939,17 +905,16 @@ function handleOrderSubmit(e) {
       method: "Myntra E-Gift Card",
       cardNo: cardNo,
       pin: pin,
-      redemptionType: redemptionType,
-      expiry: expiry,
-      balance: balance,
-      sellingPrice: sellingPrice
+      redemptionType: "Online",
+      balance: currentTotal,
+      sellingPrice: Math.round(currentTotal - 30)
     };
   } else {
     const voucherInput = document.getElementById("checkout-amazon-code");
     const voucherCode = voucherInput ? voucherInput.value.trim().toUpperCase() : "";
-    if (!voucherCode || voucherCode.length < 6) {
-      voucherInput?.classList.add("input-error");
-      showToast("Please enter your Amazon Gift Card Claim Code.");
+
+    if (!voucherCode || voucherCode.length < 5) {
+      alert("Please enter your Amazon Gift Card / Voucher Code.");
       voucherInput?.focus();
       return;
     }
@@ -962,14 +927,12 @@ function handleOrderSubmit(e) {
 
   const orderId = 'STV-' + Math.floor(10000 + Math.random() * 90000);
 
-  // Show loading state
   if (submitBtn) {
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<svg class="spin-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg><span>Submitting Request...</span>';
+    submitBtn.innerHTML = '<span>Submitting Request...</span>';
   }
 
   setTimeout(() => {
-    // Save order in state
     state.checkout.lastOrder = {
       orderId,
       fullName,
@@ -979,83 +942,61 @@ function handleOrderSubmit(e) {
       platformName: planDetails.platformName,
       planName: planDetails.planName,
       duration: planDetails.duration,
-      quantity: state.checkout.quantity,
+      quantity: state.checkout.quantity || 1,
       totalAmount: currentTotal,
-      notes,
+      notes: 'Web Order',
       paymentDetails,
-      orderDate: new Date().toLocaleString()
+      orderDate: new Date().toLocaleString(),
+      status: 'Pending'
     };
 
     if (submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<span>Pay & Activate Pass</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+      submitBtn.innerHTML = '<span>Pay & Activate Subscription</span>';
     }
 
-    // Close checkout modal and open confirmation
-    closeModal(document.getElementById("checkout-modal"));
+    // Close checkout modal
+    document.getElementById('checkout-modal')?.classList.remove('active');
+
+    // Save to localStorage & sync to admin panel
     saveNewClientOrder(state.checkout.lastOrder);
+
+    // Show Confirmation Modal
     renderConfirmationScreen(state.checkout.lastOrder);
-  }, 600);
+  }, 400);
 }
 
 function renderConfirmationScreen(order) {
-  const modal = document.getElementById("confirmation-modal");
-  const body = document.getElementById("confirmation-modal-body");
-  if (!modal || !body) return;
+  const confirmModal = document.getElementById('confirmation-modal');
+  const idEl = document.getElementById('confirm-order-id');
+  const detailsEl = document.getElementById('confirm-details-box');
 
-  body.innerHTML = `
-    <div class="confirmation-card">
-      <div class="success-icon-wrap">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#153e2b" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
+  if (idEl) idEl.textContent = order.orderId;
+  if (detailsEl) {
+    detailsEl.innerHTML = '<div style="margin-bottom: 6px;"><strong>Client Name:</strong> ' + order.fullName + '</div>' +
+      '<div style="margin-bottom: 6px;"><strong>WhatsApp Delivery:</strong> ' + order.whatsapp + '</div>' +
+      '<div style="margin-bottom: 6px;"><strong>Selected OTT:</strong> ' + order.platformName + ' (' + order.planName + ')</div>' +
+      '<div style="margin-bottom: 6px;"><strong>Payment Method:</strong> ' + order.paymentDetails.method + '</div>' +
+      '<div style="margin-bottom: 6px;"><strong>Total Amount:</strong> ₹' + order.totalAmount + '</div>' +
+      '<div style="color: var(--accent-green); font-weight: 700; margin-top: 10px;">🟡 Status: Under Review (5-15 Mins WhatsApp Delivery)</div>';
+  }
 
-      <div class="review-status-badge">
-        <span class="status-pulse-dot"></span>
-        <span>UNDER VERIFICATION REVIEW</span>
-      </div>
+  document.getElementById('btn-confirm-track').onclick = () => {
+    confirmModal?.classList.remove('active');
+    const trackInput = document.getElementById('track-query-input');
+    if (trackInput) trackInput.value = order.orderId;
+    const trackModal = document.getElementById('track-order-modal');
+    if (trackModal) trackModal.classList.add('active');
+    document.getElementById('track-search-btn')?.click();
+  };
 
-      <h3 class="confirmation-title">Order Placed — Your Request is Under Review!</h3>
-      <p class="confirmation-message">
-        Aapki request successfully submit ho gayi hai. Hamari verification team <strong>15–30 minutes</strong> ke andar aapke registered WhatsApp number <strong>${order.whatsapp}</strong> par login credentials review &amp; dispatch kar degi.
-      </p>
+  document.getElementById('btn-confirm-close').onclick = () => {
+    confirmModal?.classList.remove('active');
+  };
 
-      <div class="confirmation-receipt-card">
-        <div class="receipt-row-item">
-          <span class="r-label">Order Reference ID:</span>
-          <span class="r-val highlight-id">#${order.orderId}</span>
-        </div>
-        <div class="receipt-row-item">
-          <span class="r-label">Client Name:</span>
-          <span class="r-val">${order.fullName}</span>
-        </div>
-        <div class="receipt-row-item">
-          <span class="r-label">Subscribed Plan:</span>
-          <span class="r-val">${order.planName} (${order.duration})</span>
-        </div>
-        <div class="receipt-row-item">
-          <span class="r-label">Payment Voucher:</span>
-          <span class="r-val">${order.paymentDetails.method || "E-Gift Voucher"}</span>
-        </div>
-        <div class="receipt-row-item">
-          <span class="r-label">Total Paid:</span>
-          <span class="r-val" style="color:#153e2b; font-weight:800; font-size:1.05rem;">₹${order.totalAmount}</span>
-        </div>
-      </div>
-
-      <div class="confirmation-actions-row">
-        <button type="button" class="btn-confirmation-close" onclick="document.getElementById('confirmation-modal').classList.remove('active'); document.body.style.overflow='';">
-          Close Window
-        </button>
-        <button type="button" class="btn-confirmation-bot" id="btn-confirm-open-bot">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="3"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg>
-          <span>Track Status on Support Bot</span>
-        </button>
-      </div>
-    </div>
-  `;
-
-  openModal(modal);
+  if (confirmModal) confirmModal.classList.add('active');
 }
+
 
 function openModal(modalEl) {
   if (!modalEl) return;

@@ -948,5 +948,30 @@
       </div>
     </div>
   </div>
+
+  <!-- ORDER CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="confirmation-modal">
+    <div class="modal-container" style="max-width: 540px; text-align: center; padding: 28px;">
+      <div style="width: 56px; height: 56px; background: var(--accent-green-light); color: var(--accent-green); border: 1px solid rgba(22, 163, 74, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 800; margin: 0 auto 16px;">✓</div>
+      
+      <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">Order Request Placed & Under Review!</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Your subscription request has been received and sent to our Merchant Admin console for instant processing.</p>
+
+      <div style="background: var(--bg-secondary); border: 2px dashed var(--accent-red); border-radius: 14px; padding: 16px; margin-bottom: 20px;">
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">YOUR ORDER TRACKING ID</div>
+        <div style="font-size: 1.65rem; font-weight: 800; color: var(--accent-red); letter-spacing: 1px;" id="confirm-order-id">STV-48912</div>
+        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Save this Order ID to track your live status anytime.</p>
+      </div>
+
+      <div style="text-align: left; background: #ffffff; border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; font-size: 0.88rem; margin-bottom: 20px; color: var(--text-secondary);" id="confirm-details-box">
+        <!-- Populated dynamically -->
+      </div>
+
+      <div style="display: flex; gap: 12px;">
+        <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-confirm-track">Track Order Status</button>
+        <button type="button" class="btn btn-secondary btn-lg" id="btn-confirm-close">Close Window</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
