@@ -581,7 +581,7 @@
               <button type="button" class="pay-method-tab active" id="tab-pay-myntra" data-pay-method="myntra">
                 <span class="tab-radio-dot"></span>
                 <div class="tab-label-wrap">
-                  <span class="tab-label-title">🛍️ Myntra E-Gift Card</span>
+                  <span class="tab-label-title">🛍️ Myntra E-Gift Card <span class="discount-badge-pill" style="background:#22c55e; color:#ffffff; font-size:0.68rem; font-weight:800; padding:2px 8px; border-radius:9999px; margin-left:6px; box-shadow:0 2px 6px rgba(34,197,94,0.3);">SAVE ₹30 EXTRA</span></span>
                   <span class="tab-label-sub">Card No + PIN + Expiry</span>
                 </div>
               </button>
@@ -668,6 +668,19 @@
 
               <!-- PANEL 1: MYNTRA E-GIFT CARD -->
               <div class="payment-panel active" id="pay-panel-myntra">
+                <!-- INSTANT ₹30 DISCOUNT PROMO BANNER -->
+                <div class="myntra-discount-banner" style="background: linear-gradient(135deg, #153e2b 0%, #1e5e41 100%); color: #ffffff; border: 1.5px solid #22c55e; border-radius: 14px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 15px rgba(34,197,94,0.15);">
+                  <div style="font-size: 1.8rem; line-height: 1;">🎁</div>
+                  <div>
+                    <h5 style="margin: 0 0 4px; font-size: 0.95rem; font-weight: 800; color: #4ade80; text-transform: uppercase; letter-spacing: 0.03em;">
+                      Instant ₹30 Discount Offer Active!
+                    </h5>
+                    <p style="margin: 0; font-size: 0.84rem; color: #e2e8f0; line-height: 1.45;">
+                      Agar aap <strong>Myntra E-Gift Card</strong> banake payment karte hain toh aapko <strong>₹30 का INSTANT DISCOUNT</strong> milega! GPay / PhonePe par ₹30 discount wala card buy karke submit karein.
+                    </p>
+                  </div>
+                </div>
+
                 <!-- Visual Step Guide Card -->
                 <div class="payment-guide-card">
                   <div class="payment-guide-header">
@@ -686,7 +699,7 @@
                     </div>
                     <div class="p-step-item">
                       <span class="p-step-num">2</span>
-                      <div class="p-step-text">Pay exact amount <strong class="v-amount-display" id="myntra-v-amount-display">₹199</strong> via UPI PIN.</div>
+                      <div class="p-step-text">Pay discounted amount <strong class="v-amount-display" id="myntra-v-amount-display">₹169</strong> <span style="color:#22c55e; font-weight:800;">(Flat ₹30 Instant Discount Off)</span> via UPI.</div>
                     </div>
                     <div class="p-step-item">
                       <span class="p-step-num">3</span>

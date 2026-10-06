@@ -814,7 +814,8 @@ function updateCheckoutSummary() {
   if (qtyDisplay) qtyDisplay.textContent = `x ${qty}`;
   if (totalAmount) totalAmount.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
   const myntraAmount = document.getElementById("myntra-v-amount-display");
-  if (myntraAmount) myntraAmount.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
+  const discountedMyntra = Math.max(1, totalPrice - 30);
+  if (myntraAmount) myntraAmount.textContent = `${SITE_CONFIG.currency}${discountedMyntra}`;
   const amazonAmount = document.getElementById("amazon-v-amount-display");
   if (amazonAmount) amazonAmount.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
 
