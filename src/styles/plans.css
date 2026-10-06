@@ -1,620 +1,120 @@
-/* ==========================================================================
-   INDIVIDUAL PLAN CARDS STYLES - CLEAN, UNCLUTTERED & HIGH-TRUST
-   ========================================================================== */
-
-.plans-section {
-  position: relative;
-  padding: 100px 0;
-  background: radial-gradient(circle at 50% 10%, rgba(144, 19, 254, 0.08) 0%, rgba(6, 7, 10, 1) 70%);
-}
-
-/* Platform Switcher Tabs Bar */
-.platform-tabs-wrapper {
-  overflow-x: auto;
-  padding: 8px 4px 16px;
-  margin-bottom: 40px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.platform-tabs {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: max-content;
-  padding: 6px;
-  background: rgba(18, 22, 34, 0.85);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  margin: 0 auto;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.tab-btn {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 10px 22px;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  transition: all var(--transition-smooth);
-  white-space: nowrap;
-  border: 1px solid transparent;
-}
-
-.tab-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.tab-btn.active {
-  background: var(--platform-accent, #ffffff);
-  color: #06070a;
-  font-weight: 800;
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.tab-logo-img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  border-radius: 4px;
-  flex-shrink: 0;
-  display: block;
-}
-
-.tab-btn svg {
-  width: 17px;
-  height: 17px;
-}
-
-/* Active Platform Info Banner */
-.platform-active-banner {
-  background: linear-gradient(135deg, rgba(25, 30, 48, 0.7) 0%, rgba(15, 18, 28, 0.8) 100%);
-  border: 1px solid var(--border-highlight);
-  border-radius: var(--radius-lg);
-  padding: 24px 30px;
-  margin-bottom: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  backdrop-filter: blur(16px);
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.platform-active-banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--platform-accent, var(--accent-red));
-}
-
-.banner-left {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.banner-logo-box {
-  width: 54px;
-  height: 54px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--platform-accent, #ffffff);
-  flex-shrink: 0;
-  overflow: hidden;
-  padding: 5px;
-}
-
-.banner-logo-box svg {
-  width: 28px;
-  height: 28px;
-}
-
-.banner-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 6px;
-  display: block;
-}
-
-.banner-details h3 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.banner-details p {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-}
-
-.banner-badge-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.banner-trust-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(0, 230, 118, 0.12);
-  border: 1px solid rgba(0, 230, 118, 0.3);
-  color: var(--accent-green);
-  padding: 7px 14px;
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.banner-trust-badge svg {
-  width: 15px;
-  height: 15px;
-}
-
-/* 2-Column Comparison Layout */
-.plans-comparison-grid {
+/* PLANS SECTION STYLES */
+.plans-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  max-width: 980px;
-  margin: 0 auto 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  align-items: stretch;
 }
 
-/* Individual Plan Card */
 .plan-card {
-  background: linear-gradient(135deg, rgba(20, 25, 40, 0.85) 0%, rgba(12, 15, 24, 0.95) 100%);
-  border: 1.5px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: 38px 32px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-smooth);
   position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.7);
-}
-
-.plan-card.is-popular {
-  border-color: rgba(255, 184, 0, 0.45);
-  box-shadow: 0 15px 45px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 184, 0, 0.15);
 }
 
 .plan-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--platform-accent, rgba(255, 255, 255, 0.35));
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 35px var(--platform-glow, rgba(255, 255, 255, 0.15));
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
 }
 
-.popular-banner {
+.plan-card.featured {
+  border: 2px solid var(--accent-red);
+  box-shadow: var(--shadow-md);
+}
+
+.popular-badge {
   position: absolute;
-  top: 20px;
-  right: -35px;
-  background: linear-gradient(135deg, #ffb800 0%, #ff8800 100%);
-  color: #1a1000;
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
+  top: -14px;
+  right: 24px;
+  background-color: var(--accent-red);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
   text-transform: uppercase;
-  padding: 6px 40px;
-  transform: rotate(45deg);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.05em;
 }
 
-/* Card Header */
-.plan-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.plan-header {
   margin-bottom: 20px;
 }
 
-.plan-tier-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-subtle);
-  color: #ffffff;
-}
-
-.pill-logo-img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  border-radius: 4px;
-  flex-shrink: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.plan-tier-badge.badge-1y {
-  background: rgba(255, 184, 0, 0.12);
-  border-color: rgba(255, 184, 0, 0.35);
-  color: #ffc233;
-}
-
-.plan-duration-badge {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.09);
-  padding: 5px 14px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
 .plan-title {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 4px;
-  line-height: 1.2;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
 }
 
-.plan-type-sub {
+.plan-subtitle {
   font-size: 0.88rem;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-  font-weight: 500;
+  color: var(--text-muted);
 }
 
-/* Price Box */
-.plan-price-block {
+.plan-price-box {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.plan-price-row {
   display: flex;
   align-items: baseline;
-  gap: 12px;
-  margin-bottom: 26px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 6px;
 }
 
-.plan-price-amount {
-  font-size: 2.75rem;
-  font-weight: 900;
-  color: #ffffff;
-  font-family: var(--font-display);
+.plan-currency {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
   letter-spacing: -0.03em;
 }
 
-.plan-price-orig {
-  font-size: 1.25rem;
+.plan-duration {
+  font-size: 0.9rem;
   color: var(--text-muted);
-  text-decoration: line-through;
+  font-weight: 500;
 }
 
-.plan-save-tag {
-  font-size: 0.76rem;
-  font-weight: 800;
-  color: var(--accent-green);
-  background: rgba(0, 230, 118, 0.12);
-  border: 1px solid rgba(0, 230, 118, 0.25);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-}
-
-/* Technical Specs Pills */
-.plan-specs-pills {
+.plan-features {
+  list-style: none;
+  margin-bottom: 28px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
 }
 
-.spec-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
-  color: #d1d5db;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-sm);
-}
-
-.spec-icon {
-  width: 17px;
-  height: 17px;
-  color: var(--text-muted);
-  flex-shrink: 0;
-}
-
-.spec-highlight {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-/* REFUND & PROBLEM PROTECTION BOX IN PLAN CARD */
-.plan-refund-protection-box {
-  background: rgba(0, 230, 118, 0.06);
-  border: 1px solid rgba(0, 230, 118, 0.22);
-  border-radius: var(--radius-md);
-  padding: 12px 16px;
-  margin-bottom: 24px;
+.plan-feature-item {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
 }
 
-.refund-shield-icon {
-  width: 20px;
-  height: 20px;
+.feature-check-icon {
   color: var(--accent-green);
+  font-weight: 800;
+  font-size: 0.95rem;
   flex-shrink: 0;
   margin-top: 1px;
 }
 
-.refund-protection-text h5 {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: var(--accent-green);
-  margin-bottom: 3px;
-  letter-spacing: 0.02em;
-}
-
-.refund-protection-text p {
-  font-size: 0.76rem;
-  color: #a8b3cf;
-  line-height: 1.45;
-}
-
-/* Features List */
-.plan-features-block {
-  margin-bottom: 28px;
-}
-
-.plan-features-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.plan-feature-line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-}
-
-.plan-feature-line svg {
-  width: 16px;
-  height: 16px;
-  color: var(--accent-green);
-  flex-shrink: 0;
-}
-
-/* Buttons in Plan Card */
-.plan-buttons-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.btn-details {
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 12px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: var(--radius-full);
-  transition: all var(--transition-fast);
-  text-align: center;
-}
-
-.btn-details:hover {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* DEDICATED REFUND & REPLACEMENT PROMISE CARD (BELOW PLANS) */
-.refund-assurance-section {
-  max-width: 980px;
-  margin: 50px auto 0;
-  background: linear-gradient(135deg, rgba(16, 24, 38, 0.9) 0%, rgba(10, 14, 22, 0.95) 100%);
-  border: 1.5px solid rgba(0, 230, 118, 0.25);
-  border-radius: var(--radius-xl);
-  padding: 36px 40px;
-  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 230, 118, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.refund-assurance-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 28px;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.assurance-title-group {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.assurance-main-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(0, 230, 118, 0.15);
-  border: 1px solid rgba(0, 230, 118, 0.4);
-  color: var(--accent-green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.assurance-main-icon svg {
-  width: 26px;
-  height: 26px;
-}
-
-.assurance-title-group h3 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  margin-bottom: 2px;
-}
-
-.assurance-title-group p {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-}
-
-.assurance-bot-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #00e5ff 0%, #00a8e1 100%);
-  color: #061522;
-  font-size: 0.88rem;
-  font-weight: 800;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.35);
-  transition: all var(--transition-fast);
-  cursor: pointer;
-  border: none;
-}
-
-.assurance-bot-cta:hover {
-  background: linear-gradient(135deg, #33ecff 0%, #00c3ff 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 229, 255, 0.5);
-}
-
-.assurance-bot-cta svg {
-  width: 18px;
-  height: 18px;
-}
-
-.old-wa-assurance {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: #25d366;
-  color: #062411;
-  font-size: 0.88rem;
-  font-weight: 700;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
-  transition: all var(--transition-fast);
-}
-
-.assurance-whatsapp-cta:hover {
-  background: #2fe371;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
-}
-
-.assurance-whatsapp-cta svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* 3 Assurance Pillars */
-.assurance-pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.assurance-pillar-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-lg);
-  padding: 22px 20px;
-  transition: all var(--transition-fast);
-}
-
-.assurance-pillar-card:hover {
-  border-color: rgba(0, 230, 118, 0.3);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.pillar-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
-}
-
-.pillar-icon.green { color: var(--accent-green); background: rgba(0, 230, 118, 0.12); }
-.pillar-icon.gold { color: var(--accent-gold); background: rgba(255, 184, 0, 0.12); }
-.pillar-icon.cyan { color: var(--accent-cyan); background: rgba(0, 229, 255, 0.12); }
-
-.pillar-icon svg {
-  width: 20px;
-  height: 20px;
-}
-
-.assurance-pillar-card h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 8px;
-}
-
-.assurance-pillar-card p {
-  font-size: 0.84rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
-}
-
-@media (max-width: 860px) {
-  .plans-comparison-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .platform-active-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .assurance-pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .refund-assurance-section {
-    padding: 26px 20px;
-  }
+.plan-footer {
+  margin-top: auto;
 }

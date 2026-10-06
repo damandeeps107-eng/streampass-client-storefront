@@ -1064,6 +1064,32 @@ function closeModal(modalEl) {
  * 13. Event Listeners Setup
  */
 function setupEventListeners() {
+
+  // Extra buttons wiring
+  document.getElementById('hero-cta-contact-us')?.addEventListener('click', () => {
+    window.open('https://wa.me/919876543210?text=Hi%20StreamPass%20Support,%20I%20have%20a%20question%20about%20your%20OTT%20plans.', '_blank');
+  });
+  document.getElementById('final-cta-view-plans')?.addEventListener('click', () => {
+    document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' });
+  });
+  document.getElementById('final-cta-support')?.addEventListener('click', () => {
+    window.open('https://wa.me/919876543210?text=Hi%20StreamPass%20Support,%20I%20have%20a%20question%20about%20your%20OTT%20plans.', '_blank');
+  });
+  document.getElementById('footer-link-whatsapp')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.open('https://wa.me/919876543210?text=Hi%20StreamPass%20Support', '_blank');
+  });
+  document.getElementById('footer-link-track')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('track-order-modal')?.classList.add('active');
+  });
+  document.querySelectorAll('.plan-select-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modal = document.getElementById('checkout-modal');
+      if (modal) modal.classList.add('active');
+    });
+  });
+  
   // Search bar
   const searchInput = document.getElementById('platform-search-input');
   if (searchInput) {
