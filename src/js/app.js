@@ -47,6 +47,7 @@ const state = {
 
 // DOM Content Loaded Handler
 document.addEventListener('DOMContentLoaded', () => {
+  initLiveSalesTicker();
   initApp();
 });
 
@@ -1949,4 +1950,38 @@ function setupTrackOrderFeature() {
       renderTrackOrderResult(inputVal);
     }
   });
+}
+
+
+// Live Sales Activity Ticker
+const LIVE_SALES_ITEMS = [
+  { name: 'Rahul S. from New Delhi', item: 'All-in-One 1-Year Pass (₹1499)', time: '2m ago' },
+  { name: 'Priya M. from Bengaluru', item: 'Netflix 4K 6-Months Pass (₹199)', time: '4m ago' },
+  { name: 'Ankit V. from Mumbai', item: 'Prime Video 1-Year Pass (₹340)', time: '5m ago' },
+  { name: 'Simran K. from Chandigarh', item: 'Paid via Myntra & saved ₹30!', time: '7m ago' },
+  { name: 'Vikram P. from Hyderabad', item: 'JioHotstar Super 1-Year Pass (₹340)', time: '9m ago' },
+  { name: 'Deepak G. from Pune', item: 'All-in-One 1-Year Pass (₹1499)', time: '12m ago' }
+];
+
+function initLiveSalesTicker() {
+  const toast = document.getElementById('live-sales-toast');
+  const titleEl = document.getElementById('toast-title');
+  const subEl = document.getElementById('toast-sub');
+  if (!toast || !titleEl || !subEl) return;
+
+  let currentIndex = 0;
+  setInterval(() => {
+    toast.style.opacity = '0';
+    toast.style.transition = 'all 0.4s ease';
+    toast.style.transform = 'translateY(15px)';
+    
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % LIVE_SALES_ITEMS.length;
+      const item = LIVE_SALES_ITEMS[currentIndex];
+      titleEl.textContent = item.name;
+      subEl.textContent = item.item + ' • ' + item.time;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+    }, 400);
+  }, 4500);
 }

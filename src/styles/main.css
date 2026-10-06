@@ -35,8 +35,8 @@
   --whatsapp-dark: #128c7e;
 
   /* Typography */
-  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;;
+  --font-body: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;;
 
   /* Text Colors */
   --text-primary: #ffffff;
@@ -345,5 +345,275 @@ input, select, textarea {
 @media (max-width: 768px) {
   .section {
     padding: 64px 0;
+  }
+}
+
+
+/* ==========================================================================
+   TOP ANNOUNCEMENT BAR & HIGH-TRUST PREMIUM TYPOGRAPHY ENHANCEMENTS
+   ========================================================================== */
+
+.top-announcement-bar {
+  background: linear-gradient(90deg, #090b12 0%, #171c2b 50%, #090b12 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 0;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  letter-spacing: 0.01em;
+}
+
+.top-announcement-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.announcement-badge {
+  background: rgba(229, 9, 20, 0.18);
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  color: #ff4d5a;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.announcement-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dot-sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.offer-highlight {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* HERO SOCIAL PROOF */
+.hero-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #06070a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-left: -8px;
+}
+
+.avatar-circle:first-child {
+  margin-left: 0;
+}
+
+.avatar-circle.count {
+  background: #1e293b;
+  color: #94a3b8;
+  font-size: 0.7rem;
+}
+
+.social-proof-rating {
+  text-align: left;
+}
+
+.stars-gold {
+  color: #f59e0b;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+}
+
+.rating-text {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.rating-text strong {
+  color: #ffffff;
+}
+
+/* VERIFIED REVIEWS GRID */
+.reviews-section {
+  padding: 80px 0;
+  background: rgba(10, 12, 18, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.review-card {
+  background: rgba(18, 22, 34, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 26px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.review-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.reviewer-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.reviewer-details {
+  flex-grow: 1;
+}
+
+.reviewer-name {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.verified-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  padding: 2px 7px;
+  border-radius: 9999px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.reviewer-meta {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.review-stars {
+  color: #f59e0b;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.review-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+/* FLOATING LIVE SALES TOAST */
+.live-sales-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  animation: slideUpToast 0.5s ease-out;
+  max-width: 360px;
+}
+
+.toast-icon {
+  font-size: 1.4rem;
+}
+
+.toast-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toast-title {
+  font-weight: 700;
+  font-size: 0.84rem;
+  color: #ffffff;
+}
+
+.toast-sub {
+  font-size: 0.76rem;
+  color: #94a3b8;
+}
+
+.toast-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  margin-left: auto;
+}
+
+@keyframes slideUpToast {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .live-sales-toast {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    max-width: none;
   }
 }
