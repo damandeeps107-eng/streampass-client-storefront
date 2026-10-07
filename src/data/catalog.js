@@ -1,6 +1,6 @@
 /**
  * StreamPass Centralized OTT & Streaming Catalog & Configuration
- * Standardized 2-Plan Tier: 6 Months (₹199) and 1 Year (₹340)
+ * Standardized 2-Plan Tier: 6 Months (₹199) and 1 Year (₹330)
  */
 
 export const SITE_CONFIG = {
@@ -77,7 +77,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Premium 4K (4 Devices)",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "4K Ultra HD + HDR + Spatial Audio",
         devices: "4 Devices (Smart TV, Mobile, PC, Tablet)",
         deviceLimit: "Up to 4 Screens simultaneously",
@@ -133,7 +133,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Premium Account",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "4K UHD 60fps + 320kbps Audio",
         devices: "2 Devices (Smart TV, Mobile, PC, Tablet)",
         deviceLimit: "Up to 2 Screens simultaneously",
@@ -189,7 +189,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Personal Account",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "Very High 320kbps Hi-Fi Audio",
         devices: "Personal Account (Mobile, PC, TV, Car)",
         deviceLimit: "1 Active Audio Stream at a time",
@@ -245,7 +245,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Premium 4K (4 Devices)",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "4K Ultra HD & HDR",
         devices: "4 Devices (Smart TV, Firestick, Mobile, PC, Tablet)",
         deviceLimit: "Up to 4 Screens simultaneously",
@@ -301,7 +301,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Premium 4K Plan",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "4K Ultra HD + Dolby Vision",
         devices: "4 Devices (Smart TV, Mobile, PC, Tablet)",
         deviceLimit: "Up to 4 Screens simultaneously",
@@ -357,7 +357,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "LIV Premium",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "Full HD & 4K Selected Titles",
         devices: "2 Devices (Smart TV, Mobile, Tablet, PC)",
         deviceLimit: "Up to 2 Screens simultaneously",
@@ -413,7 +413,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Gold Annual",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "4K UHD + Dolby Audio",
         devices: "4 Devices (Smart TV, Mobile, Tablet, PC)",
         deviceLimit: "Up to 4 Screens simultaneously",
@@ -469,7 +469,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "All-Access 4K",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "4K UHD & Dolby 5.1",
         devices: "4 Devices (Smart TV, Mobile, PC, Tablet)",
         deviceLimit: "Up to 4 Screens simultaneously",
@@ -525,7 +525,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Apple ID Access",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "4K Dolby Vision & Atmos",
         devices: "3 Devices (Apple TV, Smart TV, Mac, iPhone, PC)",
         deviceLimit: "Up to 3 Screens simultaneously",
@@ -581,7 +581,7 @@ export const PLATFORMS_DATA = [
         duration: "1 Year",
         durationDays: 365,
         type: "Mega Fan Annual",
-        price: 340, originalPrice: 430,
+        price: 330, originalPrice: 430,
         quality: "Full HD 1080p Ad-Free",
         devices: "4 Devices (Smart TV, PC, Console, Mobile)",
         deviceLimit: "Up to 4 Screens simultaneously",
@@ -618,7 +618,7 @@ export const WHY_CHOOSE_US = [
   {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
     title: "Affordable Plans",
-    description: "Flat ₹199 for 6 Months and ₹340 for 1 Year across video and music platforms. Up to 80% cheaper than retail subscriptions."
+    description: "Flat ₹199 for 6 Months and ₹330 for 1 Year across video and music platforms. Up to 80% cheaper than retail subscriptions."
   },
   {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`,
@@ -641,7 +641,7 @@ export const HOW_IT_WORKS = [
   {
     step: "01",
     title: "Choose Your Plan",
-    description: "Select your favorite streaming or music platform and choose between the 6-Month (₹199) or 1-Year (₹340) plan."
+    description: "Select your favorite streaming or music platform and choose between the 6-Month (₹199) or 1-Year (₹330) plan."
   },
   {
     step: "02",

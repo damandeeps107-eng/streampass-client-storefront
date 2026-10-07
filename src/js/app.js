@@ -84,18 +84,18 @@ function updatePlatformDetailsInspector(platformId) {
 
   if (logoEl) logoEl.src = platform.logoImg;
   if (nameEl) nameEl.textContent = platform.name + " Ultra HD Pass";
-  if (subEl) subEl.textContent = "✓ Active Pass • 6 Months: ₹299 (₹199 with Myntra) | 1 Year: ₹430 (₹340 with Myntra)";
+  if (subEl) subEl.textContent = "✓ Active Pass • 6 Months: ₹299 → ₹199 | 1 Year: ₹430 → ₹330";
   if (qualityEl) qualityEl.textContent = (platform.plans && platform.plans[0]?.quality) || "4K Ultra HD + HDR";
 
   if (btn6m) {
-    btn6m.textContent = "Select 6 Months (₹299 | ₹199 with Myntra)";
+    btn6m.textContent = "Select 6 Months (₹299 → ₹199)";
     btn6m.onclick = (e) => {
       e.stopPropagation();
       openCheckoutForPlan(platform.id, (platform.plans && platform.plans[0]?.id) || (platform.id + "-6m"));
     };
   }
   if (btn1y) {
-    btn1y.textContent = "Select 1 Year (₹430 | ₹340 with Myntra)";
+    btn1y.textContent = "Select 1 Year (₹430 → ₹330)";
     btn1y.onclick = (e) => {
       e.stopPropagation();
       openCheckoutForPlan(platform.id, (platform.plans && platform.plans[1]?.id) || (platform.id + "-1y"));
@@ -131,7 +131,7 @@ function saveNewClientOrder(order) {
 }
 /**
  * StreamPass OTT Marketplace Main Application Controller
- * Standardized 2 Plans per OTT: 6 Months (₹199) and 1 Year (₹340)
+ * Standardized 2 Plans per OTT: 6 Months (₹199) and 1 Year (₹330)
  * High-Trust Layout with 100% Replacement & Refund Protection
  */
 
@@ -1701,20 +1701,20 @@ function handleUserBotInput() {
       triggerReplacementFlow();
     } else if (q.includes("vip") || q.includes("1499") || q.includes("all ott") || q.includes("combo")) {
       handleBotChipAction("vip");
-    } else if (q.includes("price") || q.includes("rate") || q.includes("cost") || q.includes("199") || q.includes("340")) {
+    } else if (q.includes("price") || q.includes("rate") || q.includes("cost") || q.includes("199") || q.includes("330")) {
       handleBotChipAction("pricing");
     } else if (q.includes("netflix")) {
-      addBotMessage("bot", "<strong>Netflix Premium 4K</strong> plans:<br/>• 6 Months: <strong>₹199</strong> (2 Devices simultaneous)<br/>• 1 Year: <strong>₹340</strong> (4 Devices simultaneous)<br/>Both backed by 100% full replacement warranty.", [
+      addBotMessage("bot", "<strong>Netflix Premium 4K</strong> plans:<br/>• 6 Months: <strong>₹199</strong> (2 Devices simultaneous)<br/>• 1 Year: <strong>₹330</strong> (4 Devices simultaneous)<br/>Both backed by 100% full replacement warranty.", [
         { label: "Buy Netflix Plan", action: "buy-netflix" },
         { label: "💰 Refund Request", action: "refund" }
       ]);
     } else if (q.includes("prime") || q.includes("amazon")) {
-      addBotMessage("bot", "<strong>Amazon Prime Video 4K</strong> plans:<br/>• 6 Months: <strong>₹199</strong> (2 Devices simultaneous)<br/>• 1 Year: <strong>₹340</strong> (4 Devices simultaneous)<br/>Includes latest 4K blockbusters & originals.", [
+      addBotMessage("bot", "<strong>Amazon Prime Video 4K</strong> plans:<br/>• 6 Months: <strong>₹199</strong> (2 Devices simultaneous)<br/>• 1 Year: <strong>₹330</strong> (4 Devices simultaneous)<br/>Includes latest 4K blockbusters & originals.", [
         { label: "Buy Prime Video", action: "buy-prime" },
         { label: "💰 Refund Request", action: "refund" }
       ]);
     } else if (q.includes("hotstar") || q.includes("cricket") || q.includes("sports")) {
-      addBotMessage("bot", "<strong>JioHotstar Super & 4K</strong>:<br/>• 6 Months: <strong>₹199</strong> (Full HD 1080p, 2 devices)<br/>• 1 Year: <strong>₹340</strong> (4K Ultra HD + Dolby Vision, 4 devices)<br/>Includes live sports & all movies!", [
+      addBotMessage("bot", "<strong>JioHotstar Super & 4K</strong>:<br/>• 6 Months: <strong>₹199</strong> (Full HD 1080p, 2 devices)<br/>• 1 Year: <strong>₹330</strong> (4K Ultra HD + Dolby Vision, 4 devices)<br/>Includes live sports & all movies!", [
         { label: "Buy Hotstar", action: "buy-hotstar" }
       ]);
     } else if (q.includes("track") || q.includes("order")) {
@@ -1741,7 +1741,7 @@ function handleBotChipAction(action) {
       { label: "💰 Refund Policy Questions", action: "refund" }
     ]);
   } else if (action === "pricing") {
-    addBotMessage("bot", "📊 <strong>Verified Transparent Pricing:</strong><br/>• <strong>6 Months:</strong> ₹199 (All individual OTTs)<br/>• <strong>1 Year:</strong> ₹340 (All individual OTTs)<br/>• <strong>VIP All-in-One Pass:</strong> ₹1,499 / Year<br/><br/>Device Limits:<br/>• Netflix & Prime: 2 Devices (6M) / 4 Devices (1Y)<br/>• YouTube & Spotify: Premium personal / multi-device<br/>• Hotstar, SonyLIV, Aha, Zee5: Full HD / 4K.", [
+    addBotMessage("bot", "📊 <strong>Verified Transparent Pricing:</strong><br/>• <strong>6 Months:</strong> ₹199 (All individual OTTs)<br/>• <strong>1 Year:</strong> ₹330 (All individual OTTs)<br/>• <strong>VIP All-in-One Pass:</strong> ₹1,499 / Year<br/><br/>Device Limits:<br/>• Netflix & Prime: 2 Devices (6M) / 4 Devices (1Y)<br/>• YouTube & Spotify: Premium personal / multi-device<br/>• Hotstar, SonyLIV, Aha, Zee5: Full HD / 4K.", [
       { label: "Browse Plans on Page", action: "scroll-plans" },
       { label: "👑 Get VIP Pass (₹1,499)", action: "buy-vip-deal" }
     ]);
@@ -2146,9 +2146,9 @@ function setupTrackOrderFeature() {
 const LIVE_SALES_ITEMS = [
   { name: 'Rahul S. from New Delhi', item: 'All-in-One 1-Year Pass (₹1499)', time: '2m ago' },
   { name: 'Priya M. from Bengaluru', item: 'Netflix 4K 6-Months Pass (₹199)', time: '4m ago' },
-  { name: 'Ankit V. from Mumbai', item: 'Prime Video 1-Year Pass (₹340)', time: '5m ago' },
+  { name: 'Ankit V. from Mumbai', item: 'Prime Video 1-Year Pass (₹330)', time: '5m ago' },
   { name: 'Simran K. from Chandigarh', item: 'Paid via Myntra & saved ₹30!', time: '7m ago' },
-  { name: 'Vikram P. from Hyderabad', item: 'JioHotstar Super 1-Year Pass (₹340)', time: '9m ago' },
+  { name: 'Vikram P. from Hyderabad', item: 'JioHotstar Super 1-Year Pass (₹330)', time: '9m ago' },
   { name: 'Deepak G. from Pune', item: 'All-in-One 1-Year Pass (₹1499)', time: '12m ago' }
 ];
 
