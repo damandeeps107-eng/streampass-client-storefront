@@ -53,7 +53,7 @@ const state = {
     whatsapp: '',
     email: '',
     deviceNotes: '',
-    paymentMethod: 'upi',
+    paymentMethod: 'binance',
     lastOrder: null
   }
 };
@@ -1930,15 +1930,24 @@ function initVipPopup() {
 
 
 function setupPaymentMethodSwitcher() {
-  const upiTab = document.getElementById("tab-pay-upi");
   const binanceTab = document.getElementById("tab-pay-binance");
   const myntraTab = document.getElementById("tab-pay-myntra");
   const amazonTab = document.getElementById("tab-pay-amazon");
 
-  const upiPanel = document.getElementById("pay-panel-upi");
   const binancePanel = document.getElementById("pay-panel-binance");
   const myntraPanel = document.getElementById("pay-panel-myntra");
   const amazonPanel = document.getElementById("pay-panel-amazon");
+
+  binanceTab?.addEventListener("click", () => {
+    state.checkout.paymentMethod = "binance";
+    binanceTab.classList.add("active");
+    myntraTab?.classList.remove("active");
+    amazonTab?.classList.remove("active");
+
+    if (binancePanel) binancePanel.style.display = "block";
+    if (myntraPanel) myntraPanel.style.display = "none";
+    if (amazonPanel) amazonPanel.style.display = "none";
+  });
 
   binanceTab?.addEventListener("click", () => {
     state.checkout.paymentMethod = "binance";
