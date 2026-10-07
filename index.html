@@ -828,15 +828,54 @@
           <div class="form-group">
             <label class="form-label">Payment Method</label>
             <div class="modal-tabs">
-              <button type="button" class="modal-tab-btn active" data-tab="myntra">🛍️ Myntra E-Gift Card (Instant ₹30 Off)</button>
-              <button type="button" class="modal-tab-btn" data-tab="amazon">📦 Amazon Gift Card / Voucher</button>
+              <button type="button" class="modal-tab-btn active" id="tab-pay-upi" data-tab="upi">⚡ Direct Instant UPI QR Code</button>
+              <button type="button" class="modal-tab-btn" id="tab-pay-myntra" data-tab="myntra">🛍️ Myntra Card (₹30 Off)</button>
+              <button type="button" class="modal-tab-btn" id="tab-pay-amazon" data-tab="amazon">📦 Amazon Voucher</button>
             </div>
           </div>
 
-          
+          <!-- Direct Instant UPI QR Panel (ACTIVE BY DEFAULT) -->
+          <div class="payment-panel active" id="pay-panel-upi">
+            <div style="background: var(--bg-surface, #f8fafc); border: 1.5px solid var(--border-color, #e2e8f0); border-radius: 14px; padding: 16px; text-align: center; margin-bottom: 16px;">
+              <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary, #0f172a); margin-bottom: 10px;">
+                📱 Scan QR Code with any UPI App (GPay, PhonePe, Paytm, BHIM)
+              </div>
+
+              <!-- Dynamic Live UPI QR Code Image -->
+              <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 12px;">
+                <div style="background: #ffffff; padding: 10px; border-radius: 12px; border: 2px solid #e2e8f0; box-shadow: 0 8px 20px rgba(15,23,42,0.08);">
+                  <img id="upi-qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=streampass@upi%26pn=StreamPass%20OTT%26cu=INR" alt="UPI QR Code" style="width: 170px; height: 170px; display: block; border-radius: 6px;" />
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
+                <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary, #475569);">UPI ID:</span>
+                <code style="background: #e2e8f0; color: #0f172a; font-weight: 800; padding: 4px 10px; border-radius: 6px; font-size: 0.9rem;" id="checkout-upi-id">streampass@upi</code>
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-copy-upi-id" style="padding: 4px 10px; font-size: 0.75rem;">Copy</button>
+              </div>
+
+              <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 8px;">
+                <a id="btn-open-upi-app" href="upi://pay?pa=streampass@upi&pn=StreamPass%20OTT&cu=INR" class="btn btn-primary btn-sm" style="width: 100%; text-decoration: none; justify-content: center; padding: 10px; font-weight: 700;">
+                  🚀 Tap to Pay with GPay / PhonePe / Paytm
+                </a>
+              </div>
+              
+              <p style="font-size: 0.76rem; color: var(--text-muted, #64748b); margin-top: 6px;">
+                ✅ Pay exact amount (<strong id="upi-modal-payable-amount">₹199</strong>) & enter your 12-digit UTR / Reference No below.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="font-weight: 700; color: var(--text-primary, #0f172a);">12-Digit UPI UTR / Transaction Ref No *</label>
+              <input type="text" inputmode="numeric" class="form-input" id="checkout-upi-utr" placeholder="e.g. 427981045920 (From GPay / PhonePe / Paytm history)" maxlength="16" autocomplete="off" />
+              <span style="font-size: 0.75rem; color: var(--text-muted, #64748b); margin-top: 4px; display: block;">
+                Enter the 12-digit UTR or Transaction ID shown in your payment app after completing transfer.
+              </span>
+            </div>
+          </div>
 
           <!-- Myntra Card Panel -->
-          <div class="payment-panel active" id="pay-panel-myntra">
+          <div class="payment-panel" id="pay-panel-myntra">
             <p style="font-size: 0.85rem; color: var(--accent-green); font-weight: 600; margin-bottom: 12px;">🎉 Instant ₹30 Discount Applied!</p>
             <div class="form-group">
               <label class="form-label">16-Digit Card Number</label>

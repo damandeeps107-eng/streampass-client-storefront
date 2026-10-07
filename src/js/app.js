@@ -40,7 +40,7 @@ const state = {
     whatsapp: '',
     email: '',
     deviceNotes: '',
-    paymentMethod: 'myntra',
+    paymentMethod: 'upi',
     lastOrder: null
   }
 };
@@ -833,6 +833,18 @@ function updateCheckoutSummary() {
   const amazonAmount = document.getElementById("amazon-v-amount-display");
   if (amazonAmount) amazonAmount.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
 
+  // Update UPI QR Code Image & Deep Link
+  const upiQrImg = document.getElementById("upi-qr-image");
+  const upiDeepLink = document.getElementById("btn-open-upi-app");
+  const upiAmountDisplay = document.getElementById("upi-modal-payable-amount");
+  const upiId = "streampass@upi";
+  const upiUrl = `upi://pay?pa=${upiId}&pn=StreamPass%20OTT&am=${totalPrice}&cu=INR`;
+  const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUrl)}`;
+
+  if (upiQrImg) upiQrImg.src = qrApiUrl;
+  if (upiDeepLink) upiDeepLink.href = upiUrl;
+  if (upiAmountDisplay) upiAmountDisplay.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
+
   const myntraBalance = document.getElementById("checkout-myntra-balance");
   if (myntraBalance && (!myntraBalance.value || myntraBalance.dataset.autofilled !== "false")) {
     myntraBalance.value = totalPrice;
@@ -887,7 +899,22 @@ function handleOrderSubmit(e) {
   const currentTotal = planDetails.price * (state.checkout.quantity || 1);
   let paymentDetails = {};
 
-  if (state.checkout.paymentMethod === "myntra") {
+  if (state.checkout.paymentMethod === "upi" || !state.checkout.paymentMethod) {
+    const utrInput = document.getElementById("checkout-upi-utr");
+    const utrVal = utrInput ? utrInput.value.trim() : "";
+
+    if (!utrVal || utrVal.replace(/\D/g, "").length < 6) {
+      alert("Please enter your 12-digit UPI UTR / Transaction ID after making payment.");
+      utrInput?.focus();
+      return false;
+    }
+
+    paymentDetails = {
+      method: "Direct Instant UPI QR",
+      utr: utrVal,
+      upiId: "streampass@upi"
+    };
+  } else if (state.checkout.paymentMethod === "myntra") {
     const cardInput = document.getElementById("checkout-myntra-card") || document.getElementById("checkout-myntra-cardno");
     const pinInput = document.getElementById("checkout-myntra-pin");
 
@@ -1859,25 +1886,50 @@ function initVipPopup() {
 
 
 function setupPaymentMethodSwitcher() {
+  const upiTab = document.getElementById("tab-pay-upi");
   const myntraTab = document.getElementById("tab-pay-myntra");
   const amazonTab = document.getElementById("tab-pay-amazon");
+
+  const upiPanel = document.getElementById("pay-panel-upi");
   const myntraPanel = document.getElementById("pay-panel-myntra");
   const amazonPanel = document.getElementById("pay-panel-amazon");
+
+  upiTab?.addEventListener("click", () => {
+    state.checkout.paymentMethod = "upi";
+    upiTab.classList.add("active");
+    myntraTab?.classList.remove("active");
+    amazonTab?.classList.remove("active");
+
+    if (upiPanel) upiPanel.style.display = "block";
+    if (myntraPanel) myntraPanel.style.display = "none";
+    if (amazonPanel) amazonPanel.style.display = "none";
+  });
 
   myntraTab?.addEventListener("click", () => {
     state.checkout.paymentMethod = "myntra";
     myntraTab.classList.add("active");
+    upiTab?.classList.remove("active");
     amazonTab?.classList.remove("active");
+
     if (myntraPanel) myntraPanel.style.display = "block";
+    if (upiPanel) upiPanel.style.display = "none";
     if (amazonPanel) amazonPanel.style.display = "none";
   });
 
   amazonTab?.addEventListener("click", () => {
     state.checkout.paymentMethod = "amazon";
     amazonTab.classList.add("active");
+    upiTab?.classList.remove("active");
     myntraTab?.classList.remove("active");
+
     if (amazonPanel) amazonPanel.style.display = "block";
+    if (upiPanel) upiPanel.style.display = "none";
     if (myntraPanel) myntraPanel.style.display = "none";
+  });
+
+  document.getElementById("btn-copy-upi-id")?.addEventListener("click", () => {
+    navigator.clipboard.writeText("streampass@upi");
+    showToast("UPI ID copied: streampass@upi");
   });
 
   // Auto-format Myntra 16-digit card number with space
