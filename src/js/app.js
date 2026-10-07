@@ -1136,17 +1136,12 @@ function setupEventListeners() {
     }
   });
   
-  // Bind platform-card click to open checkout modal with selected OTT
-  document.querySelectorAll(".platform-card").forEach(card => {
-    card.addEventListener("click", () => {
+  // Bind all platform cards (Hero visual deck & platform grid) to open checkout modal for THAT specific OTT
+  document.querySelectorAll(".visual-platform-item, .platform-card").forEach(card => {
+    card.addEventListener("click", (e) => {
       const platformId = card.getAttribute("data-platform");
       if (platformId) {
-        state.checkout.platformId = platformId;
-        const platformSelect = document.getElementById("checkout-platform-select");
-        if (platformSelect) platformSelect.value = platformId;
-        updateCheckoutSummary();
-        const modal = document.getElementById("checkout-modal");
-        if (modal) modal.classList.add("active");
+        openCheckoutForPlatform(platformId);
       }
     });
   });
@@ -1512,7 +1507,10 @@ function toggleSupportBot(forceState) {
 
   botState.isOpen = typeof forceState === "boolean" ? forceState : !botState.isOpen;
   if (botState.isOpen) {
-    windowEl.classList.add("active");
+    windowEl.style.display = "flex";
+    setTimeout(() => {
+      windowEl.classList.add("active");
+    }, 10);
     if (!botState.hasInitialized) {
       botState.hasInitialized = true;
       sendWelcomeMessage();
@@ -1522,6 +1520,9 @@ function toggleSupportBot(forceState) {
     }, 200);
   } else {
     windowEl.classList.remove("active");
+    setTimeout(() => {
+      if (!botState.isOpen) windowEl.style.display = "none";
+    }, 250);
   }
 }
 
