@@ -868,9 +868,11 @@ function updateCheckoutSummary() {
   const usdtAmountDisplay = document.getElementById("checkout-usdt-amount");
 
   const usdtVal = (totalPrice / 88.5).toFixed(2);
+  const usdtQrImg = document.getElementById("usdt-qr-image");
   if (binanceIdDisplay) binanceIdDisplay.textContent = merchantConfig.binanceId;
   if (usdtAddressDisplay) usdtAddressDisplay.textContent = merchantConfig.usdtAddress;
   if (usdtAmountDisplay) usdtAmountDisplay.textContent = `$${usdtVal} USDT`;
+  if (usdtQrImg) usdtQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(merchantConfig.usdtAddress)}`;
 
   const myntraBalance = document.getElementById("checkout-myntra-balance");
   if (myntraBalance && (!myntraBalance.value || myntraBalance.dataset.autofilled !== "false")) {
