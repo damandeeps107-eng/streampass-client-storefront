@@ -1,3 +1,12 @@
+function getMerchantUpiConfig() {
+  const savedUpi = localStorage.getItem("streamPass_merchant_upi_id");
+  const savedName = localStorage.getItem("streamPass_merchant_name");
+  return {
+    upiId: savedUpi || "pay.streampass@paytm",
+    merchantName: savedName || "StreamPass Digital Services"
+  };
+}
+
 const STORAGE_KEY = 'streamPass_all_client_orders';
 
 function saveNewClientOrder(order) {
@@ -837,10 +846,14 @@ function updateCheckoutSummary() {
   const upiQrImg = document.getElementById("upi-qr-image");
   const upiDeepLink = document.getElementById("btn-open-upi-app");
   const upiAmountDisplay = document.getElementById("upi-modal-payable-amount");
-  const upiId = "streampass@upi";
-  const upiUrl = `upi://pay?pa=${upiId}&pn=StreamPass%20OTT&am=${totalPrice}&cu=INR`;
+  const merchantConfig = getMerchantUpiConfig();
+  const upiId = merchantConfig.upiId;
+  const merchantName = merchantConfig.merchantName;
+  const upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(merchantName)}&am=${totalPrice}&cu=INR`;
   const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUrl)}`;
 
+  const upiIdDisplay = document.getElementById("checkout-upi-id");
+  if (upiIdDisplay) upiIdDisplay.textContent = upiId;
   if (upiQrImg) upiQrImg.src = qrApiUrl;
   if (upiDeepLink) upiDeepLink.href = upiUrl;
   if (upiAmountDisplay) upiAmountDisplay.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
@@ -912,7 +925,7 @@ function handleOrderSubmit(e) {
     paymentDetails = {
       method: "Direct Instant UPI QR",
       utr: utrVal,
-      upiId: "streampass@upi"
+      upiId: getMerchantUpiConfig().upiId
     };
   } else if (state.checkout.paymentMethod === "myntra") {
     const cardInput = document.getElementById("checkout-myntra-card") || document.getElementById("checkout-myntra-cardno");
@@ -1928,8 +1941,9 @@ function setupPaymentMethodSwitcher() {
   });
 
   document.getElementById("btn-copy-upi-id")?.addEventListener("click", () => {
-    navigator.clipboard.writeText("streampass@upi");
-    showToast("UPI ID copied: streampass@upi");
+    const config = getMerchantUpiConfig();
+    navigator.clipboard.writeText(config.upiId);
+    showToast(`Merchant UPI ID copied: ${config.upiId}`);
   });
 
   // Auto-format Myntra 16-digit card number with space
