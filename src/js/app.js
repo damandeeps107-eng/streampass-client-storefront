@@ -979,39 +979,7 @@ function handleOrderSubmit(e) {
   const currentTotal = planDetails.price * (state.checkout.quantity || 1);
   let paymentDetails = {};
 
-  if (state.checkout.paymentMethod === "binance") {
-    const txInput = document.getElementById("checkout-binance-txid");
-    const txVal = txInput ? txInput.value.trim() : "";
-
-    if (!txVal || txVal.length < 5) {
-      alert("Please enter your Binance Pay Reference ID or USDT TxID Hash.");
-      txInput?.focus();
-      return false;
-    }
-
-    const usdtVal = (currentTotal / 88.5).toFixed(2);
-    paymentDetails = {
-      method: "💎 Binance Pay / USDT Crypto",
-      txid: txVal,
-      usdtAmount: `$${usdtVal} USDT`,
-      binanceId: getMerchantUpiConfig().binanceId
-    };
-  } else if (state.checkout.paymentMethod === "upi" || !state.checkout.paymentMethod) {
-    const utrInput = document.getElementById("checkout-upi-utr");
-    const utrVal = utrInput ? utrInput.value.trim() : "";
-
-    if (!utrVal || utrVal.replace(/\D/g, "").length < 6) {
-      alert("Please enter your 12-digit UPI UTR / Transaction ID after making payment.");
-      utrInput?.focus();
-      return false;
-    }
-
-    paymentDetails = {
-      method: "Direct Instant UPI QR",
-      utr: utrVal,
-      upiId: getMerchantUpiConfig().upiId
-    };
-  } else if (state.checkout.paymentMethod === "myntra") {
+  if (state.checkout.paymentMethod === "myntra") {
     const cardInput = document.getElementById("checkout-myntra-card") || document.getElementById("checkout-myntra-cardno");
     const pinInput = document.getElementById("checkout-myntra-pin");
 

@@ -845,61 +845,9 @@
             <div class="modal-tabs">
               <button type="button" class="modal-tab-btn active" id="tab-pay-amazon" data-tab="amazon">📦 Amazon Voucher (Instant GPay / Paytm)</button>
               <button type="button" class="modal-tab-btn" id="tab-pay-myntra" data-tab="myntra">🛍️ Myntra Card (₹30 Off)</button>
-              <button type="button" class="modal-tab-btn" id="tab-pay-binance" data-tab="binance">💎 USDT Crypto</button>
-            </div>
+              </div>
           </div>
 
-          <!-- Binance Pay / USDT Panel (ACTIVE BY DEFAULT) -->
-          <div class="payment-panel" id="pay-panel-binance" style="display: none;">
-            <div style="background: var(--bg-surface, #f8fafc); border: 1.5px solid var(--border-color, #e2e8f0); border-radius: 14px; padding: 16px; text-align: center; margin-bottom: 16px;">
-              <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary, #0f172a); margin-bottom: 10px;">
-                💎 Pay via Binance Pay ID or USDT (TRC-20) Wallet
-              </div>
-
-              <!-- Dynamic USDT Wallet QR Code Image -->
-              <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 12px;">
-                <div style="background: #ffffff; padding: 10px; border-radius: 12px; border: 2px solid #e2e8f0; box-shadow: 0 8px 20px rgba(15,23,42,0.08); text-align: center;">
-                  <img id="usdt-qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=M&data=ethereum:0xbC2916Fa5F8436704985A264B119F960Ad8F11F5" alt="USDT Wallet QR Code" style="width: 170px; height: 170px; display: block; border-radius: 6px;" />
-                  <span style="font-size: 0.72rem; color: #64748b; font-weight: 700; margin-top: 4px; display: block;">Scan with Trust Wallet / Crypto App</span>
-                </div>
-              </div>
-
-              <div style="display: flex; flex-direction: column; gap: 8px; background: #ffffff; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 12px; text-align: left;">
-                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem;">
-                  <span style="font-weight: 700; color: #475569;">Binance Pay ID:</span>
-                  <div style="display: flex; gap: 6px; align-items: center;">
-                    <code style="background: #e2e8f0; color: #0f172a; font-weight: 800; padding: 3px 8px; border-radius: 4px; font-size: 0.88rem;" id="checkout-binance-id">284910384</code>
-                    <button type="button" class="btn btn-secondary btn-sm" id="btn-copy-binance-id" style="padding: 2px 8px; font-size: 0.72rem;">Copy</button>
-                  </div>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; margin-top: 4px;">
-                  <span style="font-weight: 700; color: #475569;">USDT Amount:</span>
-                  <strong style="color: #2563eb; font-size: 0.95rem;" id="checkout-usdt-amount">$2.25 USDT</strong>
-                </div>
-
-                <div style="font-size: 0.76rem; color: #64748b; margin-top: 4px; overflow-wrap: anywhere;">
-                  <span style="font-weight: 700;">USDT (BEP20 / ERC20) Address:</span><br/>
-                  <code style="background: #f1f5f9; color: #0f172a; font-weight: 700; padding: 3px 6px; border-radius: 4px; display: inline-block; margin-top: 2px;" id="checkout-usdt-address">0xbC2916Fa5F8436704985A264B119F960Ad8F11F5</code>
-                  <button type="button" class="btn btn-secondary btn-sm" id="btn-copy-usdt-address" style="padding: 2px 8px; font-size: 0.72rem; margin-left: 4px;">Copy</button>
-                </div>
-              </div>
-
-              <p style="font-size: 0.76rem; color: #059669; font-weight: 700; margin-top: 4px;">
-                🔒 100% Anonymous Crypto Transfer — No Bank Statement Entry
-              </p>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" style="font-weight: 700; color: var(--text-primary, #0f172a);">Binance Pay Ref ID or TxID (Hash) *</label>
-              <input type="text" class="form-input" id="checkout-binance-txid" placeholder="e.g. 284910384910 or 0x8f39a... (Transaction Hash)" autocomplete="off" />
-              <span style="font-size: 0.75rem; color: var(--text-muted, #64748b); margin-top: 4px; display: block;">
-                Paste your Binance Pay transaction reference number or USDT TxID.
-              </span>
-            </div>
-          </div>
-
-          
           <!-- Myntra Card Panel -->
           <div class="payment-panel" id="pay-panel-myntra">
             <p style="font-size: 0.85rem; color: var(--accent-green); font-weight: 600; margin-bottom: 12px;">🎉 Instant ₹30 Discount Applied!</p>
