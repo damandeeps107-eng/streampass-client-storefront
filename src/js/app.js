@@ -1,9 +1,13 @@
 function getMerchantUpiConfig() {
   const savedUpi = localStorage.getItem("streamPass_merchant_upi_id");
   const savedName = localStorage.getItem("streamPass_merchant_name");
+  const savedBinance = localStorage.getItem("streamPass_merchant_binance_id");
+  const savedUsdt = localStorage.getItem("streamPass_merchant_usdt_address");
   return {
     upiId: savedUpi || "pay.streampass@paytm",
-    merchantName: savedName || "StreamPass Digital Services"
+    merchantName: savedName || "StreamPass Digital Services",
+    binanceId: savedBinance || "284910384",
+    usdtAddress: savedUsdt || "T9zX_Binance_USDT_TRC20_Official"
   };
 }
 
@@ -858,6 +862,16 @@ function updateCheckoutSummary() {
   if (upiDeepLink) upiDeepLink.href = upiUrl;
   if (upiAmountDisplay) upiAmountDisplay.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
 
+  // Update Binance & USDT values
+  const binanceIdDisplay = document.getElementById("checkout-binance-id");
+  const usdtAddressDisplay = document.getElementById("checkout-usdt-address");
+  const usdtAmountDisplay = document.getElementById("checkout-usdt-amount");
+
+  const usdtVal = (totalPrice / 88.5).toFixed(2);
+  if (binanceIdDisplay) binanceIdDisplay.textContent = merchantConfig.binanceId;
+  if (usdtAddressDisplay) usdtAddressDisplay.textContent = merchantConfig.usdtAddress;
+  if (usdtAmountDisplay) usdtAmountDisplay.textContent = `$${usdtVal} USDT`;
+
   const myntraBalance = document.getElementById("checkout-myntra-balance");
   if (myntraBalance && (!myntraBalance.value || myntraBalance.dataset.autofilled !== "false")) {
     myntraBalance.value = totalPrice;
@@ -912,7 +926,24 @@ function handleOrderSubmit(e) {
   const currentTotal = planDetails.price * (state.checkout.quantity || 1);
   let paymentDetails = {};
 
-  if (state.checkout.paymentMethod === "upi" || !state.checkout.paymentMethod) {
+  if (state.checkout.paymentMethod === "binance") {
+    const txInput = document.getElementById("checkout-binance-txid");
+    const txVal = txInput ? txInput.value.trim() : "";
+
+    if (!txVal || txVal.length < 5) {
+      alert("Please enter your Binance Pay Reference ID or USDT TxID Hash.");
+      txInput?.focus();
+      return false;
+    }
+
+    const usdtVal = (currentTotal / 88.5).toFixed(2);
+    paymentDetails = {
+      method: "💎 Binance Pay / USDT Crypto",
+      txid: txVal,
+      usdtAmount: `$${usdtVal} USDT`,
+      binanceId: getMerchantUpiConfig().binanceId
+    };
+  } else if (state.checkout.paymentMethod === "upi" || !state.checkout.paymentMethod) {
     const utrInput = document.getElementById("checkout-upi-utr");
     const utrVal = utrInput ? utrInput.value.trim() : "";
 
@@ -1900,12 +1931,27 @@ function initVipPopup() {
 
 function setupPaymentMethodSwitcher() {
   const upiTab = document.getElementById("tab-pay-upi");
+  const binanceTab = document.getElementById("tab-pay-binance");
   const myntraTab = document.getElementById("tab-pay-myntra");
   const amazonTab = document.getElementById("tab-pay-amazon");
 
   const upiPanel = document.getElementById("pay-panel-upi");
+  const binancePanel = document.getElementById("pay-panel-binance");
   const myntraPanel = document.getElementById("pay-panel-myntra");
   const amazonPanel = document.getElementById("pay-panel-amazon");
+
+  binanceTab?.addEventListener("click", () => {
+    state.checkout.paymentMethod = "binance";
+    binanceTab.classList.add("active");
+    upiTab?.classList.remove("active");
+    myntraTab?.classList.remove("active");
+    amazonTab?.classList.remove("active");
+
+    if (binancePanel) binancePanel.style.display = "block";
+    if (upiPanel) upiPanel.style.display = "none";
+    if (myntraPanel) myntraPanel.style.display = "none";
+    if (amazonPanel) amazonPanel.style.display = "none";
+  });
 
   upiTab?.addEventListener("click", () => {
     state.checkout.paymentMethod = "upi";
@@ -1944,6 +1990,17 @@ function setupPaymentMethodSwitcher() {
     const config = getMerchantUpiConfig();
     navigator.clipboard.writeText(config.upiId);
     showToast(`Merchant UPI ID copied: ${config.upiId}`);
+  });
+  document.getElementById("btn-copy-binance-id")?.addEventListener("click", () => {
+    const config = getMerchantUpiConfig();
+    navigator.clipboard.writeText(config.binanceId);
+    showToast(`Binance Pay ID copied: ${config.binanceId}`);
+  });
+
+  document.getElementById("btn-copy-usdt-address")?.addEventListener("click", () => {
+    const config = getMerchantUpiConfig();
+    navigator.clipboard.writeText(config.usdtAddress);
+    showToast(`USDT TRC20 Address copied`);
   });
 
   // Auto-format Myntra 16-digit card number with space
