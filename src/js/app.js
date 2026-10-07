@@ -872,7 +872,7 @@ function updateCheckoutSummary() {
   if (binanceIdDisplay) binanceIdDisplay.textContent = merchantConfig.binanceId;
   if (usdtAddressDisplay) usdtAddressDisplay.textContent = merchantConfig.usdtAddress;
   if (usdtAmountDisplay) usdtAmountDisplay.textContent = `$${usdtVal} USDT`;
-  if (usdtQrImg) usdtQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(merchantConfig.usdtAddress)}`;
+  if (usdtQrImg) usdtQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=M&data=${encodeURIComponent(merchantConfig.usdtAddress.startsWith("0x") ? "ethereum:" + merchantConfig.usdtAddress : merchantConfig.usdtAddress)}`;
 
   const myntraBalance = document.getElementById("checkout-myntra-balance");
   if (myntraBalance && (!myntraBalance.value || myntraBalance.dataset.autofilled !== "false")) {
