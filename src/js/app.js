@@ -1,4 +1,47 @@
 
+function setupPaymentMethodSwitcher() {
+  const tabAmazon = document.getElementById(tab-pay-amazon);
+  const tabMyntra = document.getElementById(tab-pay-myntra);
+  const panelAmazon = document.getElementById(pay-panel-amazon);
+  const panelMyntra = document.getElementById(pay-panel-myntra);
+
+  if (!tabAmazon || !tabMyntra) return;
+
+  const switchToAmazon = () => {
+    state.checkout.paymentMethod = amazon;
+    tabAmazon.classList.add(active);
+    tabMyntra.classList.remove(active);
+    if (panelAmazon) panelAmazon.style.display = block;
+    if (panelMyntra) panelMyntra.style.display = none;
+  };
+
+  const switchToMyntra = () => {
+    state.checkout.paymentMethod = myntra;
+    tabMyntra.classList.add(active);
+    tabAmazon.classList.remove(active);
+    if (panelMyntra) panelMyntra.style.display = block;
+    if (panelAmazon) panelAmazon.style.display = none;
+  };
+
+  tabAmazon.onclick = (e) => {
+    if (e) e.preventDefault();
+    switchToAmazon();
+  };
+
+  tabMyntra.onclick = (e) => {
+    if (e) e.preventDefault();
+    switchToMyntra();
+  };
+
+  // Sync initial tab state
+  if (state.checkout.paymentMethod === myntra) {
+    switchToMyntra();
+  } else {
+    switchToAmazon();
+  }
+}
+
+
 function openCheckoutForPlatform(platformId) {
   const platform = PLATFORMS_DATA.find(p => p.id === platformId);
   state.checkout.platformId = platformId;
@@ -805,6 +848,7 @@ function showCheckoutModal() {
 
   updateCheckoutPlansDropdown();
   updateCheckoutSummary();
+  setupPaymentMethodSwitcher();
   openModal(modal);
 }
 
@@ -1427,6 +1471,9 @@ function closeMobileDrawer() {
 /**
  * 14. Policy Modals
  */
+
+
+
 function setupPolicyModals() {
   const modal = document.getElementById('policy-modal');
   const title = document.getElementById('policy-modal-title');
@@ -1950,140 +1997,7 @@ function initVipPopup() {
 }
 
 
-function setupPaymentMethodSwitcher() {
-  const amazonTab = document.getElementById("tab-pay-amazon");
-  const myntraTab = document.getElementById("tab-pay-myntra");
-  const binanceTab = document.getElementById("tab-pay-binance");
 
-  const amazonPanel = document.getElementById("pay-panel-amazon");
-  const myntraPanel = document.getElementById("pay-panel-myntra");
-  const binancePanel = document.getElementById("pay-panel-binance");
-
-  binanceTab?.addEventListener("click", () => {
-    state.checkout.paymentMethod = "binance";
-    binanceTab.classList.add("active");
-    myntraTab?.classList.remove("active");
-    amazonTab?.classList.remove("active");
-
-    if (binancePanel) binancePanel.style.display = "block";
-    if (myntraPanel) myntraPanel.style.display = "none";
-    if (amazonPanel) amazonPanel.style.display = "none";
-  });
-
-  binanceTab?.addEventListener("click", () => {
-    state.checkout.paymentMethod = "binance";
-    binanceTab.classList.add("active");
-    upiTab?.classList.remove("active");
-    myntraTab?.classList.remove("active");
-    amazonTab?.classList.remove("active");
-
-    if (binancePanel) binancePanel.style.display = "block";
-    if (upiPanel) upiPanel.style.display = "none";
-    if (myntraPanel) myntraPanel.style.display = "none";
-    if (amazonPanel) amazonPanel.style.display = "none";
-  });
-
-  upiTab?.addEventListener("click", () => {
-    state.checkout.paymentMethod = "upi";
-    upiTab.classList.add("active");
-    myntraTab?.classList.remove("active");
-    amazonTab?.classList.remove("active");
-
-    if (upiPanel) upiPanel.style.display = "block";
-    if (myntraPanel) myntraPanel.style.display = "none";
-    if (amazonPanel) amazonPanel.style.display = "none";
-  });
-
-  myntraTab?.addEventListener("click", () => {
-    state.checkout.paymentMethod = "myntra";
-    myntraTab.classList.add("active");
-    upiTab?.classList.remove("active");
-    amazonTab?.classList.remove("active");
-
-    if (myntraPanel) myntraPanel.style.display = "block";
-    if (upiPanel) upiPanel.style.display = "none";
-    if (amazonPanel) amazonPanel.style.display = "none";
-  });
-
-  amazonTab?.addEventListener("click", () => {
-    state.checkout.paymentMethod = "amazon";
-    amazonTab.classList.add("active");
-    upiTab?.classList.remove("active");
-    myntraTab?.classList.remove("active");
-
-    if (amazonPanel) amazonPanel.style.display = "block";
-    if (upiPanel) upiPanel.style.display = "none";
-    if (myntraPanel) myntraPanel.style.display = "none";
-  });
-
-  document.getElementById("btn-copy-upi-id")?.addEventListener("click", () => {
-    const config = getMerchantUpiConfig();
-    navigator.clipboard.writeText(config.upiId);
-    showToast(`Merchant UPI ID copied: ${config.upiId}`);
-  });
-  document.getElementById("btn-copy-binance-id")?.addEventListener("click", () => {
-    const config = getMerchantUpiConfig();
-    navigator.clipboard.writeText(config.binanceId);
-    showToast(`Binance Pay ID copied: ${config.binanceId}`);
-  });
-
-  document.getElementById("btn-copy-usdt-address")?.addEventListener("click", () => {
-    const config = getMerchantUpiConfig();
-    navigator.clipboard.writeText(config.usdtAddress);
-    showToast(`USDT TRC20 Address copied`);
-  });
-
-  // Auto-format Myntra 16-digit card number with space
-  const cardInput = document.getElementById("checkout-myntra-cardno");
-  cardInput?.addEventListener("input", (e) => {
-    let val = e.target.value.replace(/\D/g, "").substring(0, 16);
-    let parts = val.match(/.{1,4}/g);
-    e.target.value = parts ? parts.join(" ") : val;
-  });
-
-  // Auto-format Expiry MM/YY
-  const expiryInput = document.getElementById("checkout-myntra-expiry");
-  expiryInput?.addEventListener("input", (e) => {
-    let val = e.target.value.replace(/\D/g, "").substring(0, 4);
-    if (val.length >= 3) {
-      e.target.value = val.substring(0, 2) + "/" + val.substring(2);
-    } else {
-      e.target.value = val;
-    }
-  });
-
-  // Format PIN digits only
-  const pinInput = document.getElementById("checkout-myntra-pin");
-  pinInput?.addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/\D/g, "").substring(0, 6);
-  });
-
-  // Redemption Type Radio card selectors
-  const redemptionCards = document.querySelectorAll("#myntra-redemption-types .redemption-radio-card");
-  redemptionCards.forEach(card => {
-    card.addEventListener("click", () => {
-      redemptionCards.forEach(c => c.classList.remove("active"));
-      card.classList.add("active");
-      const radio = card.querySelector('input[type="radio"]');
-      if (radio) radio.checked = true;
-    });
-  });
-
-  // Dynamic balance to selling price auto-calculator
-  const balanceInput = document.getElementById("checkout-myntra-balance");
-  const sellingInput = document.getElementById("checkout-myntra-selling-price");
-  balanceInput?.addEventListener("input", (e) => {
-    balanceInput.dataset.autofilled = "false";
-    const val = parseFloat(e.target.value) || 0;
-    if (val > 0 && sellingInput && sellingInput.dataset.autofilled !== "false") {
-      sellingInput.value = Math.round(val * 0.92);
-    }
-  });
-
-  sellingInput?.addEventListener("input", () => {
-    sellingInput.dataset.autofilled = "false";
-  });
-}
 
 
 /* ==========================================================================
