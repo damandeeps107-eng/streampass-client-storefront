@@ -828,14 +828,14 @@
           <div class="form-group">
             <label class="form-label">Payment Method</label>
             <div class="modal-tabs">
-              <button type="button" class="modal-tab-btn active" id="tab-pay-binance" data-tab="binance">💎 USDT Crypto (Trust Wallet / Binance)</button>
+              <button type="button" class="modal-tab-btn active" id="tab-pay-amazon" data-tab="amazon">📦 Amazon Voucher (Instant GPay / Paytm)</button>
               <button type="button" class="modal-tab-btn" id="tab-pay-myntra" data-tab="myntra">🛍️ Myntra Card (₹30 Off)</button>
-              <button type="button" class="modal-tab-btn" id="tab-pay-amazon" data-tab="amazon">📦 Amazon Voucher</button>
+              <button type="button" class="modal-tab-btn" id="tab-pay-binance" data-tab="binance">💎 USDT Crypto</button>
             </div>
           </div>
 
           <!-- Binance Pay / USDT Panel (ACTIVE BY DEFAULT) -->
-          <div class="payment-panel active" id="pay-panel-binance">
+          <div class="payment-panel" id="pay-panel-binance" style="display: none;">
             <div style="background: var(--bg-surface, #f8fafc); border: 1.5px solid var(--border-color, #e2e8f0); border-radius: 14px; padding: 16px; text-align: center; margin-bottom: 16px;">
               <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary, #0f172a); margin-bottom: 10px;">
                 💎 Pay via Binance Pay ID or USDT (TRC-20) Wallet
@@ -899,7 +899,7 @@
           </div>
 
           <!-- Amazon Panel -->
-          <div class="payment-panel" id="pay-panel-amazon">
+          <div class="payment-panel active" id="pay-panel-amazon">
             <div class="form-group">
               <label class="form-label">Amazon Gift Card Claim Code</label>
               <input type="text" class="form-input" id="checkout-amazon-code" placeholder="e.g. ABCD-1234-EFGH-5678" autocomplete="off" />

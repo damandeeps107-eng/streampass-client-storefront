@@ -53,7 +53,7 @@ const state = {
     whatsapp: '',
     email: '',
     deviceNotes: '',
-    paymentMethod: 'binance',
+    paymentMethod: 'amazon',
     lastOrder: null
   }
 };
@@ -1932,13 +1932,13 @@ function initVipPopup() {
 
 
 function setupPaymentMethodSwitcher() {
-  const binanceTab = document.getElementById("tab-pay-binance");
-  const myntraTab = document.getElementById("tab-pay-myntra");
   const amazonTab = document.getElementById("tab-pay-amazon");
+  const myntraTab = document.getElementById("tab-pay-myntra");
+  const binanceTab = document.getElementById("tab-pay-binance");
 
-  const binancePanel = document.getElementById("pay-panel-binance");
-  const myntraPanel = document.getElementById("pay-panel-myntra");
   const amazonPanel = document.getElementById("pay-panel-amazon");
+  const myntraPanel = document.getElementById("pay-panel-myntra");
+  const binancePanel = document.getElementById("pay-panel-binance");
 
   binanceTab?.addEventListener("click", () => {
     state.checkout.paymentMethod = "binance";
