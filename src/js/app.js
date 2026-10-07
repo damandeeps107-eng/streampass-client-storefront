@@ -918,78 +918,28 @@ function getSelectedPlanDetails() {
 }
 
 function updateCheckoutSummary() {
-  const summaryOttName = document.getElementById("summary-ott-name");
-  const summaryPlanPrice = document.getElementById("summary-plan-price");
-  if (summaryOttName && planDetails) {
-    summaryOttName.textContent = planDetails.platformName || "Selected OTT Platform";
-  }
-  if (summaryPlanPrice && planDetails) {
-    summaryPlanPrice.innerHTML = SITE_CONFIG.currency + totalPrice + " / " + planDetails.duration;
-  }
-
   const planDetails = getSelectedPlanDetails();
   if (!planDetails) return;
 
-  const qty = state.checkout.quantity;
+  const qty = state.checkout.quantity || 1;
   const totalPrice = planDetails.price * qty;
-
-  const itemTitle = document.getElementById('summary-item-title');
-  const itemDuration = document.getElementById('summary-item-duration');
-  const itemIcon = document.getElementById('summary-item-icon');
-  const unitPrice = document.getElementById('summary-unit-price');
-  const qtyDisplay = document.getElementById('summary-qty-display');
-  const totalAmount = document.getElementById('summary-total-amount');
-
-  if (itemTitle) itemTitle.textContent = `${planDetails.platformName} - ${planDetails.planName}`;
-  if (itemDuration) itemDuration.textContent = `${planDetails.duration} • ${planDetails.quality}`;
-  if (itemIcon) itemIcon.innerHTML = planDetails.iconSvg;
-  if (unitPrice) unitPrice.textContent = `${SITE_CONFIG.currency}${planDetails.price}`;
-  if (qtyDisplay) qtyDisplay.textContent = `x ${qty}`;
-  if (totalAmount) totalAmount.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
-  const myntraAmount = document.getElementById("myntra-v-amount-display");
   const discountedMyntra = Math.max(1, totalPrice - 30);
-  if (myntraAmount) myntraAmount.textContent = `${SITE_CONFIG.currency}${discountedMyntra}`;
-  const amazonAmount = document.getElementById("amazon-v-amount-display");
-  if (amazonAmount) amazonAmount.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
 
-  // Update UPI QR Code Image & Deep Link
-  const upiQrImg = document.getElementById("upi-qr-image");
-  const upiDeepLink = document.getElementById("btn-open-upi-app");
-  const upiAmountDisplay = document.getElementById("upi-modal-payable-amount");
-  const merchantConfig = getMerchantUpiConfig();
-  const upiId = merchantConfig.upiId;
-  const merchantName = merchantConfig.merchantName;
-  const upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(merchantName)}&am=${totalPrice}&cu=INR`;
-  const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUrl)}`;
-
-  const upiIdDisplay = document.getElementById("checkout-upi-id");
-  if (upiIdDisplay) upiIdDisplay.textContent = upiId;
-  if (upiQrImg) upiQrImg.src = qrApiUrl;
-  if (upiDeepLink) upiDeepLink.href = upiUrl;
-  if (upiAmountDisplay) upiAmountDisplay.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
-
-  // Update Binance & USDT values
-  const binanceIdDisplay = document.getElementById("checkout-binance-id");
-  const usdtAddressDisplay = document.getElementById("checkout-usdt-address");
-  const usdtAmountDisplay = document.getElementById("checkout-usdt-amount");
-
-  const usdtVal = (totalPrice / 88.5).toFixed(2);
-  const usdtQrImg = document.getElementById("usdt-qr-image");
-  if (binanceIdDisplay) binanceIdDisplay.textContent = merchantConfig.binanceId;
-  if (usdtAddressDisplay) usdtAddressDisplay.textContent = merchantConfig.usdtAddress;
-  if (usdtAmountDisplay) usdtAmountDisplay.textContent = `$${usdtVal} USDT`;
-  if (usdtQrImg) usdtQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=M&data=${encodeURIComponent(merchantConfig.usdtAddress.startsWith("0x") ? "ethereum:" + merchantConfig.usdtAddress : merchantConfig.usdtAddress)}`;
-
-  const myntraBalance = document.getElementById("checkout-myntra-balance");
-  if (myntraBalance && (!myntraBalance.value || myntraBalance.dataset.autofilled !== "false")) {
-    myntraBalance.value = totalPrice;
-    myntraBalance.dataset.autofilled = "true";
+  const summaryOttName = document.getElementById("summary-ott-name");
+  const summaryPlanPrice = document.getElementById("summary-plan-price");
+  if (summaryOttName) {
+    summaryOttName.textContent = planDetails.platformName || "Selected OTT Platform";
   }
-  const myntraSelling = document.getElementById("checkout-myntra-selling-price");
-  if (myntraSelling && (!myntraSelling.value || myntraSelling.dataset.autofilled !== "false")) {
-    myntraSelling.value = Math.round(totalPrice * 0.92);
-    myntraSelling.dataset.autofilled = "true";
+  if (summaryPlanPrice) {
+    summaryPlanPrice.innerHTML = `${SITE_CONFIG.currency}${totalPrice} <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted);">/ ${planDetails.duration}</span>`;
   }
+
+  // Update dynamic Myntra discount display
+  const myntraOrigPrice = document.getElementById("myntra-orig-price");
+  const myntraDiscountedPrice = document.getElementById("myntra-discounted-price");
+
+  if (myntraOrigPrice) myntraOrigPrice.textContent = `${SITE_CONFIG.currency}${totalPrice}`;
+  if (myntraDiscountedPrice) myntraDiscountedPrice.textContent = `${SITE_CONFIG.currency}${discountedMyntra}`;
 }
 
 /**
