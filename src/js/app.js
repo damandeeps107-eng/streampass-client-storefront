@@ -7,7 +7,7 @@ function getMerchantUpiConfig() {
     upiId: savedUpi || "pay.streampass@paytm",
     merchantName: savedName || "StreamPass Digital Services",
     binanceId: savedBinance || "284910384",
-    usdtAddress: savedUsdt || "T9zX_Binance_USDT_TRC20_Official"
+    usdtAddress: savedUsdt || "0xbC2916Fa5F8436704985A264B119F960Ad8F11F5"
   };
 }
 
