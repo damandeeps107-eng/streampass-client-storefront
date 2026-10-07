@@ -1,26 +1,38 @@
 
 function setupPaymentMethodSwitcher() {
-  const tabAmazon = document.getElementById(tab-pay-amazon);
-  const tabMyntra = document.getElementById(tab-pay-myntra);
-  const panelAmazon = document.getElementById(pay-panel-amazon);
-  const panelMyntra = document.getElementById(pay-panel-myntra);
+  const tabAmazon = document.getElementById("tab-pay-amazon");
+  const tabMyntra = document.getElementById("tab-pay-myntra");
+  const panelAmazon = document.getElementById("pay-panel-amazon");
+  const panelMyntra = document.getElementById("pay-panel-myntra");
 
   if (!tabAmazon || !tabMyntra) return;
 
   const switchToAmazon = () => {
-    state.checkout.paymentMethod = amazon;
-    tabAmazon.classList.add(active);
-    tabMyntra.classList.remove(active);
-    if (panelAmazon) panelAmazon.style.display = block;
-    if (panelMyntra) panelMyntra.style.display = none;
+    state.checkout.paymentMethod = "amazon";
+    tabAmazon.classList.add("active");
+    tabMyntra.classList.remove("active");
+    if (panelAmazon) {
+      panelAmazon.classList.add("active");
+      panelAmazon.style.display = "block";
+    }
+    if (panelMyntra) {
+      panelMyntra.classList.remove("active");
+      panelMyntra.style.display = "none";
+    }
   };
 
   const switchToMyntra = () => {
-    state.checkout.paymentMethod = myntra;
-    tabMyntra.classList.add(active);
-    tabAmazon.classList.remove(active);
-    if (panelMyntra) panelMyntra.style.display = block;
-    if (panelAmazon) panelAmazon.style.display = none;
+    state.checkout.paymentMethod = "myntra";
+    tabMyntra.classList.add("active");
+    tabAmazon.classList.remove("active");
+    if (panelMyntra) {
+      panelMyntra.classList.add("active");
+      panelMyntra.style.display = "block";
+    }
+    if (panelAmazon) {
+      panelAmazon.classList.remove("active");
+      panelAmazon.style.display = "none";
+    }
   };
 
   tabAmazon.onclick = (e) => {
@@ -33,8 +45,7 @@ function setupPaymentMethodSwitcher() {
     switchToMyntra();
   };
 
-  // Sync initial tab state
-  if (state.checkout.paymentMethod === myntra) {
+  if (state.checkout.paymentMethod === "myntra") {
     switchToMyntra();
   } else {
     switchToAmazon();
