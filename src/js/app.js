@@ -75,30 +75,30 @@ function openCheckoutForPlatform(platformId) {
 
 function updatePlatformDetailsInspector(platformId) {
   const platform = PLATFORMS_DATA.find(p => p.id === platformId) || PLATFORMS_DATA[0];
-  const logoEl = document.getElementById('details-platform-logo');
-  const nameEl = document.getElementById('details-platform-name');
-  const subEl = document.getElementById('details-platform-sub');
-  const btn6m = document.getElementById('btn-details-6m');
-  const btn1y = document.getElementById('btn-details-1y');
-  const qualityEl = document.getElementById('details-quality-text');
+  const logoEl = document.getElementById("details-platform-logo");
+  const nameEl = document.getElementById("details-platform-name");
+  const subEl = document.getElementById("details-platform-sub");
+  const btn6m = document.getElementById("btn-details-6m");
+  const btn1y = document.getElementById("btn-details-1y");
+  const qualityEl = document.getElementById("details-quality-text");
 
   if (logoEl) logoEl.src = platform.logoImg;
-  if (nameEl) nameEl.textContent = platform.name + ' Ultra HD Pass';
-  if (subEl) subEl.textContent = '✓ Verified Active Pass • 6 Months: ₹199 | 1 Year: ₹340';
-  if (qualityEl) qualityEl.textContent = (platform.plans && platform.plans[0]?.quality) || '4K Ultra HD + HDR';
+  if (nameEl) nameEl.textContent = platform.name + " Ultra HD Pass";
+  if (subEl) subEl.textContent = "✓ Active Pass • 6 Months: ₹299 (₹199 with Myntra) | 1 Year: ₹430 (₹340 with Myntra)";
+  if (qualityEl) qualityEl.textContent = (platform.plans && platform.plans[0]?.quality) || "4K Ultra HD + HDR";
 
   if (btn6m) {
-    btn6m.textContent = 'Select 6 Months (₹199)';
+    btn6m.textContent = "Select 6 Months (₹299 | ₹199 with Myntra)";
     btn6m.onclick = (e) => {
       e.stopPropagation();
-      openCheckoutForPlan(platform.id, (platform.plans && platform.plans[0]?.id) || (platform.id + '-6m'));
+      openCheckoutForPlan(platform.id, (platform.plans && platform.plans[0]?.id) || (platform.id + "-6m"));
     };
   }
   if (btn1y) {
-    btn1y.textContent = 'Select 1 Year (₹340)';
+    btn1y.textContent = "Select 1 Year (₹430 | ₹340 with Myntra)";
     btn1y.onclick = (e) => {
       e.stopPropagation();
-      openCheckoutForPlan(platform.id, (platform.plans && platform.plans[1]?.id) || (platform.id + '-1y'));
+      openCheckoutForPlan(platform.id, (platform.plans && platform.plans[1]?.id) || (platform.id + "-1y"));
     };
   }
 }
